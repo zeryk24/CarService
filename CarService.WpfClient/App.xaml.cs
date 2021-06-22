@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CarService.WpfClient.Services;
+using Splat;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,14 @@ namespace CarService.WpfClient
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            Bootstrapper.RegisterDependencies(Locator.CurrentMutable, Locator.Current);
+        }
+
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            Locator.Current.GetService<MainWindow>().Show();
+        }
     }
 }

@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CarService.WpfClient"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+		ResizeMode="NoResize"
+		WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel x:Name="topBar" Background="Black" Grid.ColumnSpan="5" MouseDown="topBar_MouseDown"/>
+
+        <Rectangle Grid.ColumnSpan="2" Grid.Row="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#000428"/>
+                    <GradientStop Color="#004e92" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <ContentControl Grid.ColumnSpan="2" Grid.RowSpan="3" Content="{Binding SelectedViewModel}" />
 
     </Grid>
 </Window>

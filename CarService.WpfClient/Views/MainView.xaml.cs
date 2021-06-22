@@ -1,9 +1,8 @@
 ﻿using CarService.WpfClient.ViewModels;
+using Splat;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,23 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CarService.WpfClient
+namespace CarService.WpfClient.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainView : UserControl
     {
-        public MainWindow(MainWindowViewModel mainWindowViewModel)
+        public MainView()
         {
             InitializeComponent();
-            DataContext = mainWindowViewModel;
-        }
-
-        private void topBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            DataContext = Locator.Current.GetService<MainViewViewModel>();
         }
     }
 }
