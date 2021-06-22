@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.DAL.Entities
 {
-    class InvoiceEntity : BaseEntity
+    public class InvoiceEntity : BaseEntity
     {
         public DateTime ExposeDate { get; set; }
         public decimal Price { get; set; }

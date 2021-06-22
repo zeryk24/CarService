@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.DAL.Entities
 {
-    class OrderEntity : BaseEntity
+    public class OrderEntity : BaseEntity
     {
         public DateTime CreationDate { get; set; }
         public string CarSpz { get; set; }

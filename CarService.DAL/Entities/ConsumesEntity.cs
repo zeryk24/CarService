@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.DAL.Entities
 {
-    class ConsumesEntity : BaseEntity
+    public class ConsumesEntity : BaseEntity
     {
         public int Amount { get; set; }
         public int RepairId { get; set; }

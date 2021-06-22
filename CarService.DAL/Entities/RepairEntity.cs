@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.DAL.Entities
 {
-    class RepairEntity : BaseEntity
+    public class RepairEntity : BaseEntity
     {
         public string Description { get; set; }
         public DateTime Date { get; set; }

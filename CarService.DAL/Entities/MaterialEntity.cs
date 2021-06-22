@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.DAL.Entities
 {
-    class MaterialEntity : BaseEntity
+    public class MaterialEntity : BaseEntity
     {
         public string Name { get; set; }
         public string Description { get; set; }

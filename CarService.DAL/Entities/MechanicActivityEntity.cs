@@ -4,8 +4,8 @@ using System.Text;
 
 namespace CarService.DAL.Entities
 {
-    class MechanicActivityEntity : BaseEntity
+    public class MechanicActivityEntity : BaseEntity
     {
-        
+
     }
 }
