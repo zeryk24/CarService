@@ -14,23 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CarService.WpfClient
+namespace CarService.WpfClient {
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow(MainWindowViewModel mainWindowViewModel)
-        {
-            InitializeComponent();
-            DataContext = mainWindowViewModel;
-        }
-
-        private void topBar_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
-        }
-    }
+	public MainWindow( MainWindowViewModel mainWindowViewModel )
+	{
+		InitializeComponent();
+		DataContext = mainWindowViewModel;
+		Application.Current.MainWindow = this;
+	}
+}
 }
