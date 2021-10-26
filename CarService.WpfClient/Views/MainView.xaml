@@ -67,16 +67,47 @@
 
 
         <Rectangle Stroke="#303030" Opacity="0.9"  StrokeThickness="5" RadiusX="10" RadiusY="10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="3"/>
-
-
-
-        <StackPanel Grid.ColumnSpan="5" Grid.Row="3" Grid.RowSpan="3" Background="Transparent" Margin="0,-80,0,0">
+        <StackPanel Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="3" Background="Transparent" Margin="0,-80,0,0">
             <TextBlock Text="Nejstarší hotové objednávky" Grid.ColumnSpan="10" Margin="20" FontSize="25" FontWeight="Bold" Foreground="DarkOrange"/>
 
             <ListView Foreground="DarkOrange" Background="Gray" Margin="20" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedParameter}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Height" Value="50" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="Background" Value="#303030"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <Border
+                                                BorderBrush="Transparent"
+                                                BorderThickness="0"
+                                                Background="{TemplateBinding Background}">
+                                                <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                            <Border
+                                                BorderBrush="Transparent"
+                                                BorderThickness="0"
+                                                Background="{TemplateBinding Background}">
+                                                <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
@@ -106,8 +137,15 @@
             <Rectangle.Fill>
                 <SolidColorBrush Color="#2b2b2b"/>
             </Rectangle.Fill>
-       
         </Rectangle>
-
+        <TextBlock Grid.Column="4" Grid.Row="2" Text="Mechanik bez práce" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="10"/>
+        <ItemsControl ItemsSource="{Binding Mechanics}"  DisplayMemberPath="Name" Grid.Row="2" Grid.Column="4" Margin="0,50,0,0" Width="{Binding Width}" Foreground="DarkOrange">
+            <ItemsControl.ItemContainerStyle>
+                <Style>
+                    <Setter Property="FrameworkElement.Margin" Value="5"/>
+                    <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
     </Grid>
 </UserControl>

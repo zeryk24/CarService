@@ -13,6 +13,11 @@ public class OrdersModel
 	public string Car { get; set; }
 }
 
+public class MechanicModel
+{
+	public string Name { get; set; }
+}
+
 public class MainViewViewModel : ViewModelBase
 {
 	private List<OrdersModel> _orders;
@@ -23,6 +28,17 @@ public class MainViewViewModel : ViewModelBase
 		{
 			_orders = value;
 			OnPropertyChanged( nameof( Orders ) );
+		}
+	}
+
+	private List<MechanicModel> _mechanics;
+	public List<MechanicModel> Mechanics
+	{
+		get { return _mechanics; }
+		set
+		{
+			_mechanics = value;
+			OnPropertyChanged( nameof( Mechanics ) );
 		}
 	}
 
@@ -46,6 +62,18 @@ public class MainViewViewModel : ViewModelBase
 			Number = "+420 731 255 878",
 			Car = "Ford Focus (3BC5847)"
 		};
+
+		var y = new MechanicModel
+		{
+			Name = "Emil Fialový"
+		};
+
+		Mechanics = new List<MechanicModel>();
+		Mechanics.Add( y );
+		Mechanics.Add( y );
+		Mechanics.Add( y );
+		Mechanics.Add( y );
+		Mechanics.Add( y );
 
 		Orders = new List<OrdersModel>();
 		Orders.Add( x );
