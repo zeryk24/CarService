@@ -12,7 +12,7 @@ namespace CarService.DAL.Repositories
     {
         public MaterialRepository(ApplicationDbContext context) : base(context)
         {
-
+            Includes.Add(e => e.Consumes);
         }
     }
 }

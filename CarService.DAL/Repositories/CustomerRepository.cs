@@ -12,7 +12,7 @@ namespace CarService.DAL.Repositories
     {
         public CustomerRepository(ApplicationDbContext context) : base(context)
         {
-
+            Includes.Add(e => e.Orders);
         }
     }
 }

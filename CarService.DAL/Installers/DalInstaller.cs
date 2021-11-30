@@ -23,7 +23,6 @@ namespace CarService.DAL.Installers
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();
             services.AddScoped<IMaterialRepository, MaterialRepository>();
-            services.AddScoped<IMechanicActivityRepository, MechanicActivityRepository>();
             services.AddScoped<IMechanicRepository, MechanicRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IRepairRepository, RepairRepository>();

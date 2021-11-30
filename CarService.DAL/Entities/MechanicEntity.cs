@@ -9,9 +9,6 @@ namespace CarService.DAL.Entities
         public string Name { get; set; }
         public string ResidencePlace { get; set; }
         public string PhoneNumber { get; set; }
-        public ICollection<MechanicActivityEntity> MechanicActivities { get; set; }
-        public bool CarPainter { get; set; }
-        public bool CarPlumber { get; set; }
-        public bool EngineSpecialist { get; set; }
+        public ICollection<RepairEntity> Repairs { get; set; }
     }
 }

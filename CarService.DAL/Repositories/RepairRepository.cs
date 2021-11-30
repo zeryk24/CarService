@@ -12,7 +12,9 @@ namespace CarService.DAL.Repositories
     {
         public RepairRepository(ApplicationDbContext context) : base(context)
         {
-
+            Includes.Add(e => e.Order);
+            Includes.Add(e => e.Activities);
+            Includes.Add(e => e.Mechanic);
         }
     }
 }

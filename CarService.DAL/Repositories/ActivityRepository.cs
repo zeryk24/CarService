@@ -12,7 +12,8 @@ namespace CarService.DAL.Repositories
     {
         public ActivityRepository(ApplicationDbContext context) : base(context)
         {
-
+            Includes.Add(e => e.Repair);
+            Includes.Add(e => e.Consumes);
         }
     }
 }

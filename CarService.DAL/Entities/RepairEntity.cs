@@ -10,7 +10,8 @@ namespace CarService.DAL.Entities
         public DateTime Date { get; set; }
         public int OrderId { get; set; }
         public OrderEntity Order { get; set; }
-        public ICollection<ConsumesEntity> Consumes { get; set; }
         public ICollection<ActivityEntity> Activities { get; set; }
+        public int MechanicId { get; set; }
+        public MechanicEntity Mechanic { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace CarService.DAL.Database
         public DbSet<CustomerEntity> Customers { get; set; }
         public DbSet<InvoiceEntity> Invoices { get; set; }
         public DbSet<MaterialEntity> Materials { get; set; }
-        public DbSet<MechanicActivityEntity> MechanicActivities { get; set; }
         public DbSet<MechanicEntity> Mechanics { get; set; }
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<RepairEntity> Repaires { get; set; }

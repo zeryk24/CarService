@@ -12,6 +12,6 @@ namespace CarService.DAL.Entities
         public State State { get; set; }
         public int RepairId { get; set; }
         public RepairEntity Repair { get; set; }
-        public ICollection<MechanicActivityEntity> MechanicActivities { get; set; }
+        public ICollection<ConsumesEntity> Consumes { get; set; }
     }
 }

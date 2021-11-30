@@ -12,7 +12,8 @@ namespace CarService.DAL.Repositories
     {
         public ConsumesRepository(ApplicationDbContext context) : base(context)
         {
-
+            Includes.Add(e => e.Activity);
+            Includes.Add(e => e.Material);
         }
     }
 }
