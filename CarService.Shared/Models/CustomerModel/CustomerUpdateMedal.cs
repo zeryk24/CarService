@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarService.Shared.Models.OrderModel
+namespace CarService.Shared.Models.CustomerModel
 {
-    public class OrderUpdateModel
+    public class CustomerUpdateModel
     {
     }
 }

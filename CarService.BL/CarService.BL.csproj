@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CarService.DAL\CarService.DAL.csproj" />
+    <ProjectReference Include="..\CarService.Shared\CarService.Shared.csproj" />
   </ItemGroup>
 
 </Project>

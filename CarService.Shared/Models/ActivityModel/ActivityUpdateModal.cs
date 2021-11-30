@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.ActivityModel
 {
-    internal class ActivityUpdateModel
+    public class ActivityUpdateModel
     {
     }
 }

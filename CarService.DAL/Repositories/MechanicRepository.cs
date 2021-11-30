@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories
 {
-    class MechanicRepository : EntityRepository<MechanicEntity>, IMechanicRepository
+    public class MechanicRepository : EntityRepository<MechanicEntity>, IMechanicRepository
     {
         public MechanicRepository(ApplicationDbContext context) : base(context)
         {

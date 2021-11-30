@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories
 {
-    class InvoiceRepository : EntityRepository<InvoiceEntity>, IInvoiceRepository
+    public class InvoiceRepository : EntityRepository<InvoiceEntity>, IInvoiceRepository
     {
         public InvoiceRepository(ApplicationDbContext context) : base(context)
         {

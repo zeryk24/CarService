@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.RepairModel
 {
-    internal class RepairDetailModel
+    public class RepairDetailModel
     {
     }
 }

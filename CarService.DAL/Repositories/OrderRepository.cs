@@ -8,7 +8,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories
 {
-    class OrderRepository : EntityRepository<OrderEntity>, IOrderRepository
+    public class OrderRepository : EntityRepository<OrderEntity>, IOrderRepository
     {
         public OrderRepository(ApplicationDbContext context) : base(context)
         {

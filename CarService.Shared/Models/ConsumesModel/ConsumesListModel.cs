@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarService.Shared.Models.CutomerModel
+namespace CarService.Shared.Models.ConsumesModel
 {
-    internal class ConsumesListModel
+    public class ConsumesListModel
     {
     }
 }

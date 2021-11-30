@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.OrderModel
 {
-    internal class OrderDetailModel
+    public class OrderDetailModel
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.MaterialModel
 {
-    internal class MaterialListModel
+    public class MaterialListModel
     {
     }
 }
