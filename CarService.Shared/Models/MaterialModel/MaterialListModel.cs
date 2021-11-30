@@ -6,5 +6,9 @@ namespace CarService.Shared.Models.MaterialModel
 {
     public class MaterialListModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public float StockQuantity { get; set; }
     }
 }

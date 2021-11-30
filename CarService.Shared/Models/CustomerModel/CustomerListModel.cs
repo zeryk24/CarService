@@ -6,5 +6,9 @@ namespace CarService.Shared.Models.CustomerModel
 {
     public class CustomerListModel
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
     }
 }

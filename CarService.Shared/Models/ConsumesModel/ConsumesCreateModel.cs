@@ -6,5 +6,8 @@ namespace CarService.Shared.Models.ConsumesModel
 {
     public class ConsumesCreateModel
     {
+        public int Amount { get; set; }
+        public int RepairId { get; set; }
+        public int MaterialId { get; set; }
     }
 }
