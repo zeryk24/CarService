@@ -19,7 +19,7 @@ namespace CarService.DAL.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Data Source=(localdb)\ProjectModels;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+                optionsBuilder.UseSqlServer(@"Data Source=tcp:auctioniisdbserver.database.windows.net,1433;Initial Catalog=CarService.Api_db;User Id=iisadmin@auctioniisdbserver;Password=Jahoda123");
                 optionsBuilder.LogTo(Console.WriteLine);
             }
         }
