@@ -5,10 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="NSwag.Annotations" Version="13.14.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CarService.BL\CarService.BL.csproj" />
     <ProjectReference Include="..\CarService.DAL\CarService.DAL.csproj" />
   </ItemGroup>
 

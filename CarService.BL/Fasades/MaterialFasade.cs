@@ -6,12 +6,12 @@ using CarService.Shared.Models.MaterialModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
 using AutoMapper;
-
+using CarService.DAL.Repositories.Interfaces;
 namespace CarService.BL.Fasades
 {
-    class MaterialFasade : EntityFacade<MaterialEntity, MaterialDetailModel, MaterialCreateModel, MaterialListModel, MaterialUpdateModel>
+    public class MaterialFasade : EntityFacade<MaterialEntity, MaterialDetailModel, MaterialCreateModel, MaterialListModel, MaterialUpdateModel>
     {
-        public MaterialFasade(MaterialRepository repository, IMapper mapper) : base(repository, mapper)
+        public MaterialFasade(IMaterialRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

@@ -6,12 +6,12 @@ using CarService.Shared.Models.RepairModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
 using AutoMapper;
-
+using CarService.DAL.Repositories.Interfaces;
 namespace CarService.BL.Fasades
 {
-    class RepairFasade : EntityFacade<RepairEntity, RepairDetailModel, RepairCreateModel, RepairListModel, RepairUpdateModel>
+    public class RepairFasade : EntityFacade<RepairEntity, RepairDetailModel, RepairCreateModel, RepairListModel, RepairUpdateModel>
     {
-        public RepairFasade(RepairRepository repository, IMapper mapper) : base(repository, mapper)
+        public RepairFasade(IRepairRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

@@ -5,13 +5,14 @@ using System.Text;
 using CarService.Shared.Models.ActivityModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
+using CarService.DAL.Repositories.Interfaces;
 using AutoMapper;
 
 namespace CarService.BL.Fasades
 {
-    class ActivityFasade : EntityFacade<ActivityEntity, ActivityDetailModel, ActivityCreateModel, ActivityListModel, ActivityUpdateModel>
+    public class ActivityFasade : EntityFacade<ActivityEntity, ActivityDetailModel, ActivityCreateModel, ActivityListModel, ActivityUpdateModel>
     {
-        public ActivityFasade(ActivityRepository repository, IMapper mapper) : base(repository, mapper)
+        public ActivityFasade(IActivityRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

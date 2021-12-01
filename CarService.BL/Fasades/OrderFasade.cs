@@ -6,12 +6,12 @@ using CarService.Shared.Models.OrderModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
 using AutoMapper;
-
+using CarService.DAL.Repositories.Interfaces;
 namespace CarService.BL.Fasades
 {
-    class OrderFasade : EntityFacade<OrderEntity, OrderDetailModel, OrderCreateModel, OrderListModel, OrderUpdateModel>
+    public class OrderFasade : EntityFacade<OrderEntity, OrderDetailModel, OrderCreateModel, OrderListModel, OrderUpdateModel>
     {
-        public OrderFasade(OrderRepository repository, IMapper mapper) : base(repository, mapper)
+        public OrderFasade(IOrderRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

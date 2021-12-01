@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories.Interfaces
 {
-    interface IMechanicRepository : IEntityRepository<MechanicEntity>
+    public interface IMechanicRepository : IEntityRepository<MechanicEntity>
     {
     }
 }

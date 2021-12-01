@@ -1,4 +1,7 @@
+using CarService.BL.Installers;
 using CarService.DAL.Installers;
+using CarService.DAL.Repositories.Generic;
+using CarService.DAL.Repositories.Interfaces.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,7 +31,8 @@ namespace CarService
         public void ConfigureServices(IServiceCollection services)
         {
             services.DalInstall(Configuration.GetConnectionString("DefaultConnection"));
-
+            services.BlInstall();
+            services.AddScoped(typeof(IEntityRepository<>), typeof(EntityRepository<>));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

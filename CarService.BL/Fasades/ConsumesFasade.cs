@@ -6,12 +6,12 @@ using CarService.Shared.Models.ConsumesModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
 using AutoMapper;
-
+using CarService.DAL.Repositories.Interfaces;
 namespace CarService.BL.Fasades
 {
-    class ConsumesFasade : EntityFacade<ConsumesEntity, ConsumesDetailModel, ConsumesCreateModel, ConsumesListModel, ConsumesUpdateModel>
+    public class ConsumesFasade : EntityFacade<ConsumesEntity, ConsumesDetailModel, ConsumesCreateModel, ConsumesListModel, ConsumesUpdateModel>
     {
-        public ConsumesFasade(ConsumesRepository repository, IMapper mapper) : base(repository, mapper)
+        public ConsumesFasade(IConsumesRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

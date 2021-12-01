@@ -6,12 +6,12 @@ using CarService.Shared.Models.InvoiceModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
 using AutoMapper;
-
+using CarService.DAL.Repositories.Interfaces;
 namespace CarService.BL.Fasades
 {
-    class InvoiceFasade : EntityFacade<InvoiceEntity, InvoiceDetailModel, InvoiceCreateModel, InvoiceListModel, InvoiceUpdateModel>
+    public class InvoiceFasade : EntityFacade<InvoiceEntity, InvoiceDetailModel, InvoiceCreateModel, InvoiceListModel, InvoiceUpdateModel>
     {
-        public InvoiceFasade(InvoiceRepository repository, IMapper mapper) : base(repository, mapper)
+        public InvoiceFasade(IInvoiceRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

@@ -6,12 +6,12 @@ using CarService.Shared.Models.CustomerModel;
 using CarService.DAL.Entities;
 using CarService.DAL.Repositories;
 using AutoMapper;
-
+using CarService.DAL.Repositories.Interfaces;
 namespace CarService.BL.Fasades
 {
-    class CustomerFasade : EntityFacade<CustomerEntity, CustomerDetailModel, CustomerCreateModel, CustomerListModel, CustomerUpdateModel>
+    public class CustomerFasade : EntityFacade<CustomerEntity, CustomerDetailModel, CustomerCreateModel, CustomerListModel, CustomerUpdateModel>
     {
-        public CustomerFasade(CustomerRepository repository, IMapper mapper) : base(repository, mapper)
+        public CustomerFasade(ICustomerRepository repository, IMapper mapper) : base(repository, mapper)
         {
 
         }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories.Interfaces
 {
-    interface IConsumesRepository : IEntityRepository<ConsumesEntity>
+    public interface IConsumesRepository : IEntityRepository<ConsumesEntity>
     {
     }
 }

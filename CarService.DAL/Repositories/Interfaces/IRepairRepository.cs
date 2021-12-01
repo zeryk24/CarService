@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories.Interfaces
 {
-    interface IRepairRepository : IEntityRepository<RepairEntity>
+    public interface IRepairRepository : IEntityRepository<RepairEntity>
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarService.DAL.Repositories.Interfaces
 {
-    interface IOrderRepository : IEntityRepository<OrderEntity>
+    public interface IOrderRepository : IEntityRepository<OrderEntity>
     {
     }
 }
