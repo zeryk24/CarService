@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CarService.DAL.Entities;
+using CarService.Shared.Models.CustomerModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace CarService.BL.Profiles.CustomerProfile
     {
         public CustomerDetailProfile()
         {
-            CreateMap<CustomerEntity, CustomerDetailProfile>();
+            CreateMap<CustomerEntity, CustomerDetailModel>();
         }
     }
 }
