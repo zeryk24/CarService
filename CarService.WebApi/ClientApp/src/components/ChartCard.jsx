@@ -31,6 +31,10 @@ const ChartCard = (props) => {
         }
     }
     useEffect(() => {
+        set_fetched_index(0);
+        set_data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    }, [props]);
+    useEffect(() => {
         let index = 1 + fetched_index;
         set_fetched_index(index);
         GetData(index);
@@ -65,13 +69,13 @@ const ChartCard = (props) => {
         }
     >
         <CardContent>
-            <Typography variant="h6" color="primary" textAlign="center">Shell Helix HX7 5W-40 4L</Typography>
+            <Typography variant="h6" color="primary" textAlign="center">{props.material.name}</Typography>
             <Line options={{ color: "#bbbbbb" }} data={data} />
             <Typography sx={{ margin: "15px" }} variant="h6" color="primary">
                 Popis produktu
             </Typography>
             <Typography sx={{ margin: "15px" }} variant="body1" color="primary">
-                Shell Helix HX7 5W-40 je motorový olej pro nejmodernější benzínové,dieselové a plynové motory osobních a lehkých užitkových automobilů. Je vhodný pro nepřeplňované a přeplňované motory, motory s přímým vstřikováním či víceventilové motory.
+                {props.material.description}
             </Typography>
             <Button sx={{ margin: "15px" }} variant="outlined" size="large">Objednat</Button>
         </CardContent>

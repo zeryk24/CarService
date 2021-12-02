@@ -14,7 +14,9 @@ const MaterialCard = (props) => {
             </div>
             <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <Button sx={{ margin: "5px" }} variant="outlined">Objednat</Button>
-                <Button sx={{ margin: "5px" }} variant="outlined">Zobrazit spotřebu</Button>
+                <Button sx={{ margin: "5px" }} onClick={() => {
+                    props.setDetail(props.material)
+                }} variant="outlined">Zobrazit spotřebu</Button>
             </div>
         </CardContent>
     </Card >
@@ -36,6 +38,7 @@ const Home = (props) => {
     const [leastSeach, setLeastSeach] = useState("");
     const [maxItems, setMaxItems] = useState(4);
     const [colps, setColps] = useState(false);
+    const [chartMaterial, setChartMaterial] = useState(0);
     useEffect(() => {
         setSiteName("Analýza spotřeby materiálů")
         fasade.GetAll().then((data) => {
@@ -43,6 +46,7 @@ const Home = (props) => {
             data = data.sort((a, b) => {
                 return a.consumes.length < b.consumes.length ? 1 : -1;
             });
+            setChartMaterial(data[0])
             setOftenMaterials(data);
             data = [...data];
             data = data.sort((a, b) => {
@@ -62,7 +66,7 @@ const Home = (props) => {
     let k = 0;
     for (let mat of oftenMaterials) {
         if (oftenSeach !== "" && !IsSubstring(oftenSeach, mat.name)) continue;
-        often_material_cards.push(<MaterialCard key={k++} amount={mat.stockQuantity}>{mat.name}</MaterialCard>)
+        often_material_cards.push(<MaterialCard key={k++} setDetail={setChartMaterial} material={mat} amount={mat.stockQuantity}>{mat.name}</MaterialCard>)
         if (k == maxItems) {
             break;
         }
@@ -71,7 +75,7 @@ const Home = (props) => {
     k = 0;
     for (let mat of leastMaterials) {
         if (leastSeach !== "" && !IsSubstring(leastSeach, mat.name)) continue;
-        least_material_cards.push(<MaterialCard key={k++} amount={mat.stockQuantity}>{mat.name}</MaterialCard>)
+        least_material_cards.push(<MaterialCard key={k++} setDetail={setChartMaterial} material={mat} amount={mat.stockQuantity}>{mat.name}</MaterialCard>)
         if (k == maxItems) {
             break;
         }
@@ -98,7 +102,7 @@ const Home = (props) => {
             }
         </div>
         <div style={{ overflow: "hidden", display: "flex", flexGrow: "1", alignItems: "center", flexDirection: "column", paddingTop: "50px" }}>
-            <ChartCard material={oftenMaterials[0]} />
+            <ChartCard material={chartMaterial} />
         </div>
         {/* Missing materials */}
         <div style={{ minHeight: "105vh", display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
