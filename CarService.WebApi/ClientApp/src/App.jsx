@@ -5,6 +5,7 @@ import './custom.css'
 import Home from './sites/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { orange, grey } from '@mui/material/colors';
+import Allmaterials from "./sites/AllMaterials"
 const theme = createTheme({
   palette: {
     mode: "dark",
@@ -22,6 +23,7 @@ export default class App extends Component {
       <ThemeProvider theme={theme}>
         <Layout>
           <Route exact path='/' component={Home} />
+          <Route exact path='/allmaterials' component={Allmaterials} />
         </Layout>
       </ThemeProvider>
     );

@@ -21,8 +21,12 @@ class MaterialsFasade{
 
     async Create(auction_form_data){
         let reponse = await fetch(this.api_url, {
-            method: 'POST',         
-            body: auction_form_data
+            method: 'POST',    
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },     
+            body: JSON.stringify(auction_form_data)
         });
         if (!reponse.ok){
             return false;
@@ -34,7 +38,11 @@ class MaterialsFasade{
     async Update(auction_form_data){
         let reponse = await fetch(this.api_url, {
             method: 'PUT',
-            body: auction_form_data
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            body: JSON.stringify(auction_form_data)
         });
         let data = await reponse.text();
         console.log(data);

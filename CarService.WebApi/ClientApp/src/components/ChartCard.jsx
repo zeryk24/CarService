@@ -33,7 +33,8 @@ const ChartCard = (props) => {
     useEffect(() => {
         set_fetched_index(0);
         set_data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-    }, [props]);
+
+    }, [props.material]);
     useEffect(() => {
         let index = 1 + fetched_index;
         set_fetched_index(index);

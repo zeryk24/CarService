@@ -1,8 +1,9 @@
-import { AppBar, Drawer, Toolbar, IconButton, Typography } from "@mui/material";
+import { AppBar, Drawer, Toolbar, IconButton, Typography, Button, Divider } from "@mui/material";
 import { useContext, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box } from "@mui/system";
 import LayoutContext from "./LayoutContext";
+import { Link } from "react-router-dom";
 const Navbar = (props) => {
     const { navOpen, setNavOpen, siteName, setSiteName } = useContext(LayoutContext);
 
@@ -25,12 +26,18 @@ const Navbar = (props) => {
             </Toolbar>
         </AppBar>
         <Drawer open={navOpen} variant="persistent" anchor="left">
-            <div style={{ width: "200px", height: "100%" }}>
+            <div style={{ width: "200px", height: "100%", display: "flex", paddingTop: "20px", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
 
+                <Typography variant="h6" color="primary" fontWeight="bold">Materiály</Typography>
+                <Button fullWidth LinkComponent={Link} to="/allmaterials">Všechny</Button>
+                <Button fullWidth LinkComponent={Link} to="/">Analýza</Button>
+                <Typography variant="h6" color="primary" fontWeight="bold">Zaměstanci</Typography>
+                <Button fullWidth>Všechny</Button>
+                <Button fullWidth>Analýza</Button>
             </div>
-        </Drawer>
+        </Drawer >
 
-    </div>
+    </div >
 }
 
 export default Navbar;
