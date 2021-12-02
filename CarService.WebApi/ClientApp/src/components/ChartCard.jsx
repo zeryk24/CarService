@@ -19,7 +19,9 @@ const ChartCard = (props) => {
     let consumes = props.material.consumes;
     const [raw_data, set_data] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     const [fetched_index, set_fetched_index] = useState(-1);
+    const [first, setFirst] = useState(true);
     const GetData = (index) => {
+
         if (index <= consumes.length - 1) {
             fasade.GetDate(consumes[index].activityId).then((data) => {
                 let a = new Date(data.split("T")[0]);
@@ -29,17 +31,23 @@ const ChartCard = (props) => {
 
             })
         }
+        else {
+            set_fetched_index(-1);
+        }
     }
     useEffect(() => {
-        set_fetched_index(0);
-        set_data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-
+        if (first) return;
+        set_data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
     }, [props.material]);
     useEffect(() => {
         let index = 1 + fetched_index;
+
         set_fetched_index(index);
         GetData(index);
+        setFirst(false);
     }, [raw_data])
+
+
     ChartJS.register(
         CategoryScale,
         LinearScale,

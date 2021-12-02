@@ -89,6 +89,7 @@ const Home = (props) => {
             justifyContent: "start",
             alignItems: "start",
             background: "#424242",
+            flexWrap: "wrap"
         }}>
         {/* Frequently used materials */}
         <div style={{ minHeight: "155vh", display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
@@ -101,7 +102,7 @@ const Home = (props) => {
                 <Button sx={{ margin: "10px" }} onClick={() => { setMaxItems(maxItems + 4) }} variant="contained">Načíst více materiálů</Button>
             }
         </div>
-        <div style={{ overflow: "hidden", display: "flex", flexGrow: "1", alignItems: "center", flexDirection: "column", paddingTop: "50px" }}>
+        <div style={{ overflow: "hidden", width: "20%", minWidth: "500px", display: "flex", flexGrow: "1", alignItems: "center", flexDirection: "column", paddingTop: "50px" }}>
             <ChartCard material={chartMaterial} />
         </div>
         {/* Missing materials */}
