@@ -11,8 +11,30 @@ import {
     Legend,
 } from 'chart.js';
 import { minWidth } from "@mui/system";
+import MaterialsFasade from "../fasades/MaterialsFasade"
+import { useEffect, useState } from "react";
 const ChartCard = (props) => {
-    const labels = ['January', 'February', 'March', 'March', 'March'];
+    const fasade = new MaterialsFasade();
+    const labels = ['Leden', 'Únor', 'Březen', 'Duben', 'Květen', "Červen", "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"];
+    let consumes = props.material.consumes;
+    const [raw_data, set_data] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+    const [fetched_index, set_fetched_index] = useState(-1);
+    const GetData = (index) => {
+        if (index <= consumes.length - 1) {
+            fasade.GetDate(consumes[index].activityId).then((data) => {
+                let a = new Date(data.split("T")[0]);
+                let c = [...raw_data];
+                c[a.getMonth()] += consumes[index].amount;
+                set_data(c);
+
+            })
+        }
+    }
+    useEffect(() => {
+        let index = 1 + fetched_index;
+        set_fetched_index(index);
+        GetData(index);
+    }, [raw_data])
     ChartJS.register(
         CategoryScale,
         LinearScale,
@@ -27,12 +49,13 @@ const ChartCard = (props) => {
         datasets: [
             {
                 // label: 'Spotřeba',
-                data: [1, 8, 3, 15, 1],
+                data: raw_data,
                 backgroundColor: "#e65100",
                 borderColor: '#e65100',
             },
         ],
     };
+
     return <Card
         sx={
             {

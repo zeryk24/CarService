@@ -39,9 +39,9 @@ const Home = (props) => {
     useEffect(() => {
         setSiteName("Analýza spotřeby materiálů")
         fasade.GetAll().then((data) => {
-            console.log(data);
+
             data = data.sort((a, b) => {
-                return a.consumes.length > b.consumes.length ? 1 : -1;
+                return a.consumes.length < b.consumes.length ? 1 : -1;
             });
             setOftenMaterials(data);
             data = [...data];
@@ -98,7 +98,7 @@ const Home = (props) => {
             }
         </div>
         <div style={{ overflow: "hidden", display: "flex", flexGrow: "1", alignItems: "center", flexDirection: "column", paddingTop: "50px" }}>
-            <ChartCard />
+            <ChartCard material={oftenMaterials[0]} />
         </div>
         {/* Missing materials */}
         <div style={{ minHeight: "105vh", display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>

@@ -2,7 +2,11 @@ class MaterialsFasade{
     constructor(){
         this.api_url = "api/material";
     }
-
+    async GetDate(consumes_id){
+        let reponse = await fetch("api/activity/getdate/" + consumes_id);
+        let data = await reponse.text();
+        return data;
+    }
     async GetAll(){
         let reponse = await fetch(this.api_url);
         let data = await reponse.json();
