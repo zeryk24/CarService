@@ -1,4 +1,5 @@
-﻿using CarService.Shared.Models.MechanicModel;
+﻿using CarService.Shared.Enums;
+using CarService.Shared.Models.MechanicModel;
 using CarService.Shared.Models.OrderModel;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,6 @@ namespace CarService.Shared.Models.RepairModel
         public ICollection<OrderListModel> Activities { get; set; }
         public int MechanicId { get; set; }
         public MechanicDetailModel Mechanic { get; set; }
+        public State State { get; set; }
     }
 }

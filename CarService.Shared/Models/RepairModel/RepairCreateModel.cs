@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarService.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,5 +11,6 @@ namespace CarService.Shared.Models.RepairModel
         public DateTime Date { get; set; }
         public int OrderId { get; set; }
         public int MechanicId { get; set; }
+        public State State { get; set; }
     }
 }

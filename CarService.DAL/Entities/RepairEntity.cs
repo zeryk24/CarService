@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarService.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,5 +14,6 @@ namespace CarService.DAL.Entities
         public ICollection<ActivityEntity> Activities { get; set; }
         public int MechanicId { get; set; }
         public MechanicEntity Mechanic { get; set; }
+        public State State { get; set; }
     }
 }
