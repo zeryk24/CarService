@@ -16,5 +16,10 @@ namespace CarService.BL.Fasades
         {
 
         }
+        public DateTime GetActivityDate(int id)
+        {
+            var activity = GetById(id);
+            return activity.Repair.Date;
+        }
     }
 }
