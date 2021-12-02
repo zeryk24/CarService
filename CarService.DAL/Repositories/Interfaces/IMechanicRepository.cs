@@ -8,5 +8,8 @@ namespace CarService.DAL.Repositories.Interfaces
 {
     public interface IMechanicRepository : IEntityRepository<MechanicEntity>
     {
+        public ICollection<MechanicEntity> GetAllWithoutWork();
+ 
     }
+
 }

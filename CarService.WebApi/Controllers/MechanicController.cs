@@ -25,6 +25,12 @@ namespace CarService.Api.Controllers
         {
             return MechanicFacade.GetAll().ToList();
         }
+        [HttpGet("WithoutWork")]
+        [OpenApiOperation(ApiOperationBaseName + nameof(GetAllWithoutWork))]
+        public ActionResult<List<MechanicListModel>> GetAllWithoutWork()
+        {
+            return MechanicFacade.GetAllWithouWork().ToList();
+        }
 
         [HttpGet("{id}")]
         [OpenApiOperation(ApiOperationBaseName + nameof(GetById))]

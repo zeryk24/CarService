@@ -11,9 +11,16 @@ namespace CarService.BL.Fasades
 {
     public class MechanicFasade : EntityFacade<MechanicEntity, MechanicDetailModel, MechanicCreateModel, MechanicListModel, MechanicUpdateModel>
     {
+        private IMechanicRepository mechanicRepository;
         public MechanicFasade(IMechanicRepository repository, IMapper mapper) : base(repository, mapper)
         {
-
+            mechanicRepository = repository;
         }
+        public ICollection<MechanicListModel> GetAllWithouWork()
+        {
+            var all = mechanicRepository.GetAllWithoutWork();
+            return mapper.Map<ICollection<MechanicListModel>>(all);
+        }
+
     }
 }
