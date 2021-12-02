@@ -1,28 +1,30 @@
 import { AppBar, Drawer, Toolbar, IconButton, Typography } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Box } from "@mui/system";
+import LayoutContext from "./LayoutContext";
 const Navbar = (props) => {
-    const [open, handleOpen] = useState(true);
-    const styles = { paddingLeft: open ? "200px" : "5px" }
+    const { navOpen, setNavOpen, siteName, setSiteName } = useContext(LayoutContext);
+
+    const styles = { paddingLeft: navOpen ? "200px" : "5px" }
     return <div>
-        <AppBar position="fixed" open={open} sx={styles}>
+        <AppBar position="static" open={navOpen} sx={styles}>
             <Toolbar>
                 <IconButton
                     color="primary"
                     aria-label="open drawer"
-                    onClick={() => { handleOpen(!open) }}
+                    onClick={() => { setNavOpen(!navOpen) }}
                     edge="start"
 
                 >
                     <MenuIcon />
                 </IconButton>
                 <Typography color="primary" variant="h6" noWrap component="div">
-                    Car Servis Information System
+                    {siteName}
                 </Typography>
             </Toolbar>
         </AppBar>
-        <Drawer open={open} variant="persistent" anchor="left">
+        <Drawer open={navOpen} variant="persistent" anchor="left">
             <div style={{ width: "200px", height: "100%" }}>
 
             </div>
