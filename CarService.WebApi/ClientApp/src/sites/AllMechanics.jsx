@@ -119,6 +119,11 @@ const MechanicCard = (props) => {
         </div>
         )
     }
+    if (repairs.length == 0) {
+        repairs.push(<Typography variant="h6" color={white}>
+            Tento mechanik nemá přiděleny žádné opravy
+        </Typography>)
+    }
     return <Card sx={{ margin: "30px" }}>
         <CardContent>
             <div style={{
