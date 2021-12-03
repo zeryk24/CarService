@@ -15,6 +15,10 @@ const MaterialCard = (props) => {
             <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <Button sx={{ margin: "5px" }} variant="outlined">Objednat</Button>
                 <Button sx={{ margin: "5px" }} onClick={() => {
+                    window.scrollTo({
+                        top: 10,
+                        behavior: 'smooth'
+                    });
                     props.setDetail(props.material)
                 }} variant="outlined">Zobrazit spotřebu</Button>
             </div>
@@ -89,10 +93,11 @@ const Home = (props) => {
             justifyContent: "start",
             alignItems: "start",
             background: "#424242",
-            flexWrap: "wrap"
+            flexWrap: "wrap",
+            minHeight: "110vh"
         }}>
         {/* Frequently used materials */}
-        <div style={{ minHeight: "155vh", display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
+        <div style={{ display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
             <Typography color="primary" variant="h4" sx={{ width: "420px" }}>Často používané produkty</Typography>
             <TextField value={oftenSeach} onChange={(e) => { setOftenSeach(e.target.value) }} sx={{ margin: "20px", width: "95%" }} label="Vyhledat" variant="outlined" />
             <Collapse in={colps} timeout={500}>
@@ -102,11 +107,11 @@ const Home = (props) => {
                 <Button sx={{ margin: "10px" }} onClick={() => { setMaxItems(maxItems + 4) }} variant="contained">Načíst více materiálů</Button>
             }
         </div>
-        <div style={{ overflow: "hidden", width: "20%", minWidth: "500px", display: "flex", flexGrow: "1", alignItems: "center", flexDirection: "column", paddingTop: "50px" }}>
+        <div id="chartgraph" style={{ overflow: "hidden", width: "20%", minWidth: "500px", display: "flex", flexGrow: "1", alignItems: "center", flexDirection: "column", paddingTop: "50px" }}>
             <ChartCard material={chartMaterial} />
         </div>
         {/* Missing materials */}
-        <div style={{ minHeight: "105vh", display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
+        <div style={{ display: "flex", justifyContent: "start", alignItems: "center", flexDirection: "column" }}>
             <Typography color="primary" variant="h4" sx={{ width: "420px" }}>Nejméně na skladě</Typography>
             <TextField value={leastSeach} onChange={(e) => { setLeastSeach(e.target.value) }} sx={{ margin: "20px", width: "95%" }} label="Vyhledat" variant="outlined" />
             <Collapse in={colps} timeout={500}>

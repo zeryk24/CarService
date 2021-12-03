@@ -33,7 +33,7 @@ const Navbar = (props) => {
                 <Button fullWidth LinkComponent={Link} to="/">Analýza</Button>
                 <Typography variant="h6" color="primary" fontWeight="bold">Zaměstanci</Typography>
                 <Button fullWidth LinkComponent={Link} to="/allmechanics">Správa</Button>
-                <Button fullWidth>Analýza</Button>
+                {/* <Button fullWidth>Analýza</Button> */}
             </div>
         </Drawer >
 
