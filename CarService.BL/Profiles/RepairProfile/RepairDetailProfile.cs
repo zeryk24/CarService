@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CarService.BL.Profiles.RepairProfile
 {
-    internal class RepairDetailProfile : Profile
+    public class RepairDetailProfile : Profile
     {
         public RepairDetailProfile()
         {
