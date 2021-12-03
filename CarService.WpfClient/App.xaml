@@ -10,15 +10,24 @@
             <DataTemplate DataType="{x:Type viewmodels:MainViewViewModel}">
                 <views:MainView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:CustomersViewModel}">
+                <views:CustomersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:OrdersViewModel}">
+                <views:OrdersView/>
+            </DataTemplate>
+
             <Style TargetType="{x:Type Rectangle}">
                 <Setter Property="Fill" Value="#2b2b2b"/>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" Value="#202020">
-                            </Setter>
-                        </Trigger>
-                    </Style.Triggers>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Stroke" Value="DarkOrange"/>
+                        <Setter Property="StrokeThickness" Value="1"/>
+                    </Trigger>
+                </Style.Triggers>
                 </Style>
+            
+            
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

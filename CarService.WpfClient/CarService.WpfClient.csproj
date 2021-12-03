@@ -7,8 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\document.png" />
+    <None Remove="Images\documents.png" />
+    <None Remove="Images\mechanic.png" />
+    <None Remove="Images\people.png" />
+    <None Remove="Images\person.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\document.png" />
+    <Resource Include="Images\documents.png" />
+    <Resource Include="Images\mechanic.png" />
+    <Resource Include="Images\people.png" />
+    <Resource Include="Images\person.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Splat" Version="11.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarService.Shared\CarService.Shared.csproj" />
   </ItemGroup>
 
 </Project>

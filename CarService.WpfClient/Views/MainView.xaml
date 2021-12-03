@@ -29,11 +29,15 @@
 
         <TextBlock Text="Autoservis" FontSize="50" Foreground="DarkOrange" FontWeight="Bold" Grid.ColumnSpan="8" Grid.Row="1" HorizontalAlignment="Center" Margin="0,10,0,0"></TextBlock>
 
-        <Rectangle Grid.Row="2" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,120,5,80" >
-            <Rectangle.InputBindings>
-                <MouseBinding Command="{Binding OtherCommand}" MouseAction="LeftClick"/>
-            </Rectangle.InputBindings>
-        </Rectangle>
+        <Grid Grid.Row="2">
+            <Grid.InputBindings>
+                <MouseBinding Command="{Binding OrderCommand}" MouseAction="LeftClick"/>
+            </Grid.InputBindings>
+            <Rectangle  RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,120,5,80" />
+            <TextBlock Text="Objednávky" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="DarkOrange" Margin="0,190,0,0" Cursor="Hand"/>
+            <Image Source="/images/documents.png" Width="50" Margin="-0,25,0,0"/>
+        </Grid>
+
 
         <Rectangle Grid.Column="1" Grid.Row="2" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,120,5,80">
             <Rectangle.InputBindings>
@@ -41,11 +45,14 @@
             </Rectangle.InputBindings>
         </Rectangle>
 
-        <Rectangle Grid.Column="2" Grid.Row="2" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,120,5,80">
-            <Rectangle.InputBindings>
-                <MouseBinding Command="{Binding OtherCommand}" MouseAction="LeftClick"/>
-            </Rectangle.InputBindings>
-        </Rectangle>
+        <Grid Grid.Column="2" Grid.Row="2">
+            <Grid.InputBindings>
+                <MouseBinding Command="{Binding CustomersCommand}" MouseAction="LeftClick"/>
+            </Grid.InputBindings>
+            <Rectangle  RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,120,5,80"/>
+            <TextBlock Text="Zákazníci" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="DarkOrange" Margin="0,190,0,0" Cursor="Hand"/>
+            <Image Source="/images/people.png" Width="50" Margin="0,25,0,0"/>
+        </Grid>
 
         <Rectangle Grid.Column="3" Grid.Row="2" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,120,5,80">
             <Rectangle.InputBindings>
@@ -53,17 +60,23 @@
             </Rectangle.InputBindings>
         </Rectangle>
 
-        <Rectangle VerticalAlignment="Top" Grid.ColumnSpan="2" Height="100" Grid.Row="2" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,10,5,120">
-            <Rectangle.InputBindings>
-                <MouseBinding Command="{Binding OtherCommand}" MouseAction="LeftClick"/>
-            </Rectangle.InputBindings>
-        </Rectangle>
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" Height="115" VerticalAlignment="Top">
+            <Grid.InputBindings>
+                <MouseBinding Command="{Binding CustomersCommand}" MouseAction="LeftClick"/>
+            </Grid.InputBindings>
+            <Rectangle VerticalAlignment="Top" Grid.ColumnSpan="2" Height="100" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,10,5,0"/>
+            <TextBlock Text="Přidat objednávku" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="45" Cursor="Hand"/>
+            <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="/images/document.png" Width="70" Margin="30,20,0,0"/>
+        </Grid>
 
-        <Rectangle Grid.Column="2" VerticalAlignment="top" Grid.ColumnSpan="2" Height="100" Grid.Row="2" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,10,5,120">
-            <Rectangle.InputBindings>
-                <MouseBinding Command="{Binding OtherCommand}" MouseAction="LeftClick"/>
-            </Rectangle.InputBindings>
-        </Rectangle>
+        <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Height="115" VerticalAlignment="Top">
+            <Grid.InputBindings>
+                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+            </Grid.InputBindings>
+            <Rectangle VerticalAlignment="Top" Height="100" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,10,5,0"/>
+            <TextBlock Text="Přidat zákazníka" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="45" Cursor="Hand"/>
+            <Image VerticalAlignment="Top" HorizontalAlignment="Left" Source="/images/person.png" Width="70" Margin="30,20,0,0"/>
+        </Grid>
 
 
         <Rectangle Stroke="#303030" Opacity="0.9"  StrokeThickness="5" RadiusX="10" RadiusY="10" Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="3"/>
@@ -123,11 +136,11 @@
                                 <Setter Property="Height" Value="0"/>
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="{Binding Width}"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Number}" Width="{Binding Width}"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat='d.M.yyyy'}" Width="{Binding Width}"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="{Binding Width}"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Id}" Width="{Binding Width}"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding CreationDate, StringFormat='d.M.yyyy'}" Width="{Binding Width}"/>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Car}" Width="{Binding Width}"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding CarSpz}" Width="{Binding Width}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -138,8 +151,10 @@
                 <SolidColorBrush Color="#2b2b2b"/>
             </Rectangle.Fill>
         </Rectangle>
-        <TextBlock Grid.Column="4" Grid.Row="2" Text="Mechanik bez práce" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="10"/>
-        <ItemsControl ItemsSource="{Binding Mechanics}"  DisplayMemberPath="Name" Grid.Row="2" Grid.Column="4" Margin="0,50,0,0" Width="{Binding Width}" Foreground="DarkOrange">
+
+        <Image Grid.Column="4" Grid.Row="2" VerticalAlignment="Top"  Source="/images/mechanic.png" Width="100" Margin="20"/>
+        <TextBlock Grid.Column="4" Grid.Row="2" Text="Mechanik bez práce" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="10,130"/>
+        <ItemsControl ItemsSource="{Binding Mechanics}" DisplayMemberPath="Name" Grid.Row="2" Grid.Column="4" Margin="0,180,0,0" Width="{Binding Width}" Foreground="DarkOrange">
             <ItemsControl.ItemContainerStyle>
                 <Style>
                     <Setter Property="FrameworkElement.Margin" Value="5"/>
@@ -148,4 +163,5 @@
             </ItemsControl.ItemContainerStyle>
         </ItemsControl>
     </Grid>
+
 </UserControl>

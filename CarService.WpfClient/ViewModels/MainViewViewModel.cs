@@ -1,104 +1,136 @@
-﻿using CarService.WpfClient.Services;
+﻿using CarService.Shared.Models.MechanicModel;
+using CarService.Shared.Models.OrderModel;
+using CarService.WpfClient.ApiClients;
+using CarService.WpfClient.ApiClients.Interfaces;
+using CarService.WpfClient.Services;
 using CarService.WpfClient.ViewModels.Base;
+using Microsoft.Xaml.Behaviors.Core;
+using Splat;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows.Input;
 
-namespace CarService.WpfClient.ViewModels {
-public class OrdersModel
+namespace CarService.WpfClient.ViewModels
 {
-	public DateTime Date { get; set; }
-	public string Name { get; set; }
-	public string Number { get; set; }
-	public string Car { get; set; }
-}
 
-public class MechanicModel
-{
-	public string Name { get; set; }
-}
+    public class MainViewViewModel : ViewModelBase
+    {
+        private IOrderApiClient _orderApiClient;
+        private IMechanicApiClient _mechanicApiClient;
+        private NavigationService _navigationService;
+        private ObservableCollection<OrderListModel> _orders;
 
-public class MainViewViewModel : ViewModelBase
-{
-	private List<OrdersModel> _orders;
-	public List<OrdersModel> Orders
-	{
-		get { return _orders; }
-		set
-		{
-			_orders = value;
-			OnPropertyChanged( nameof( Orders ) );
-		}
-	}
+        private ICommand _customersCommand;
+        public ICommand CustomersCommand
+        {
+            get
+            {
+                return _customersCommand ??= new ActionCommand(() => _navigationService.GoTo("customer"));
+            }
+        }
 
-	private List<MechanicModel> _mechanics;
-	public List<MechanicModel> Mechanics
-	{
-		get { return _mechanics; }
-		set
-		{
-			_mechanics = value;
-			OnPropertyChanged( nameof( Mechanics ) );
-		}
-	}
+        private ICommand _orderCommand;
+        public ICommand OrderCommand
+        {
+            get
+            {
+                return _orderCommand ??= new ActionCommand(() => _navigationService.GoTo("order"));
+            }
+        }
 
-	private int _width;
-	public int Width
-	{
-		get { return _width; }
-		set
-		{
-			_width = value;
-			OnPropertyChanged( nameof( Width ) );
-		}
-	}
+        public ObservableCollection<OrderListModel> Orders
+        {
+            get { return _orders; }
+            set
+            {
+                _orders = value;
+                OnPropertyChanged(nameof(Orders));
+            }
+        }
 
-	public MainViewViewModel()
-	{
-		var x = new OrdersModel
-		{
-			Date = new DateTime( 2010, 10, 10 ),
-			Name = "Emil zelený",
-			Number = "+420 731 255 878",
-			Car = "Ford Focus (3BC5847)"
-		};
+        private ObservableCollection<MechanicListModel> _mechanics;
+        public ObservableCollection<MechanicListModel> Mechanics
+        {
+            get { return _mechanics; }
+            set
+            {
+                _mechanics = value;
+                OnPropertyChanged(nameof(Mechanics));
+            }
+        }
 
-		var y = new MechanicModel
-		{
-			Name = "Emil Fialový"
-		};
+        private int _width;
+        public int Width
+        {
+            get { return _width; }
+            set
+            {
+                _width = value;
+                OnPropertyChanged(nameof(Width));
+            }
+        }
 
-		Mechanics = new List<MechanicModel>();
-		Mechanics.Add( y );
-		Mechanics.Add( y );
-		Mechanics.Add( y );
-		Mechanics.Add( y );
-		Mechanics.Add( y );
+        public async void GetDoneOrders()
+        {
+            try
+            {
+                Orders.Clear();
+                foreach (var order in (ICollection)await _orderApiClient.GetAll())
+                {
+                    Orders.Add((OrderListModel)order);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
 
-		Orders = new List<OrdersModel>();
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
-		Orders.Add( x );
+        public async void GetFreeMechanics()
+        {
+            try
+            {
+                Mechanics.Clear();
+                foreach (var mechanic in (ICollection)await _mechanicApiClient.GetAll())
+                {
+                    Mechanics.Add((MechanicListModel)mechanic);
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
 
-		ScreenParameters.Instance.WindowSizeChangedEvent += WindowSizeChangedEvent;
+        public MainViewViewModel(IOrderApiClient orderApiClient, IMechanicApiClient mechanicApiClient, NavigationService navigationService)
+        {
+            ScreenParameters.Instance.WindowSizeChangedEvent += WindowSizeChangedEvent;
+            Width = 200;
 
-		Width = 200;
-	}
+            _orderApiClient = orderApiClient;
+            _mechanicApiClient = mechanicApiClient;
+            _navigationService = navigationService;
+            Orders = new ObservableCollection<OrderListModel>();
+            Mechanics = new ObservableCollection<MechanicListModel>();
 
-	private void WindowSizeChangedEvent( object sender, EventArgs e )
-	{
-		Width = ( int )( ScreenParameters.Instance.WindowWidth / 6 );
-	}
-}
+            GetDoneOrders();
+            GetFreeMechanics();
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+            Orders.Add(new OrderListModel());
+        }
+
+        private void WindowSizeChangedEvent(object sender, EventArgs e)
+        {
+            Width = (int)(ScreenParameters.Instance.WindowWidth / 6);
+        }
+    }
 }
