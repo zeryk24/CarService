@@ -1,4 +1,4 @@
-import { Card, CardContent, Paper, Typography, Button, TextField, LinearProgress, Collapse } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, Card, DialogTitle, CardContent, Paper, Typography, Button, TextField, LinearProgress, Collapse } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import ChartCard from "../components/ChartCard";
 import LayoutContext from "../components/LayoutContext";
@@ -6,6 +6,7 @@ import MaterialsFasade from "../fasades/MaterialsFasade"
 const MaterialCard = (props) => {
     let amount = props.amount;
     let positive = amount > 10;
+    const [openModal, setOpenModal] = useState(false);
     return <Card sx={{ width: "400px", margin: "10px" }}>
         <CardContent>
             <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "start" }}>
@@ -13,7 +14,7 @@ const MaterialCard = (props) => {
                 <Typography sx={{ textAlign: "right", width: "20%" }} variant="h6" color={positive ? "lightgreen" : "lightsalmon"}> <b>{amount}&nbsp;Ks</b></Typography>
             </div>
             <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                <Button sx={{ margin: "5px" }} variant="outlined">Objednat</Button>
+                <Button sx={{ margin: "5px" }} onClick={() => { setOpenModal(true) }} variant="outlined">Objednat</Button>
                 <Button sx={{ margin: "5px" }} onClick={() => {
                     window.scrollTo({
                         top: 10,
@@ -23,7 +24,28 @@ const MaterialCard = (props) => {
                 }} variant="outlined">Zobrazit spotřebu</Button>
             </div>
         </CardContent>
+        <OrderModal material={props.material} openModal={openModal} setOpenModal={setOpenModal} />
     </Card >
+}
+
+const OrderModal = (props) => {
+    const Update = () => {
+        props.setOpenModal(false);
+    }
+    const [amount, setAmount] = useState(null);
+    return <Dialog
+        open={props.openModal}
+        onClose={() => { props.setOpenModal(false) }}>
+        <DialogTitle>
+            <Typography variant="h5" color="primary">{props.material.name}</Typography>
+        </DialogTitle>
+        <DialogContent>
+            <TextField value={amount} type="number" onChange={(e) => { setAmount(e.target.value) }} variant="standard" label="Množšsví" />
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={Update}>Objednat</Button>
+        </DialogActions>
+    </Dialog>
 }
 
 function IsSubstring(substring, string) {

@@ -6,6 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Table } from "reactstrap";
 import Snackbar from '@mui/material/Snackbar';
 import { Add } from "@mui/icons-material";
+import EditIcon from '@mui/icons-material/Edit';
 const EditingDialog = (props) => {
     let material = props.material;
     const [name, setName] = useState("");
@@ -82,12 +83,25 @@ const MaterialTableRow = (props) => {
     for (let cons of mat.consumes) {
         sum += cons.amount;
     }
-    return <TableRow hover onClick={() => {
-        props.onClick(mat)
-    }}>
-        <TableCell>
+    let material = props.material;
+    const [amount, setAmount] = useState("");
+    const [loaded, setLoaded] = useState(false);
+    const SendUpdate = () => {
+        const fasade = new MaterialsFasade();
+        if (amount == "") return;
+        material.stockQuantity += parseInt(amount);
+
+        fasade.Update(material).then((data) => {
+            setLoaded(true);
+            setAmount("");
+        });
+    }
+    return <TableRow hover>
+        <TableCell onClick={() => {
+            props.onClick(mat)
+        }}>
             <Typography>
-                {mat.name}
+                <Button><EditIcon color="primary" /> </Button>{mat.name}
             </Typography>
         </TableCell>
         <TableCell>
@@ -104,6 +118,21 @@ const MaterialTableRow = (props) => {
             <Typography>
                 {sum} Ks
             </Typography>
+        </TableCell>
+        <TableCell style={{ display: "flex", alignItems: "center" }}>
+            <TextField type="number" value={amount} onChange={(e) => { setAmount(e.target.value) }} size="small" label="Množštví" variant="filled" />
+            <Button onClick={SendUpdate}><Add /></Button>
+            <Snackbar
+                open={loaded}
+                onClose={() => {
+                    setLoaded(false)
+                }}
+                autoHideDuration={1000}
+            >
+                <Alert severity="success">
+                    Úspěšně uloženo!
+                </Alert>
+            </Snackbar>
         </TableCell>
     </TableRow>
 }
@@ -179,6 +208,11 @@ const AllMaterials = () => {
                             <TableCell>
                                 <Typography color="primary">
                                     Kolik použito
+                                </Typography>
+                            </TableCell>
+                            <TableCell>
+                                <Typography textAlign="center" color="primary">
+                                    Naskladnit
                                 </Typography>
                             </TableCell>
                         </TableRow>
