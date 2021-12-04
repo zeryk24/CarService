@@ -60,7 +60,7 @@ const EditingDialog = (props) => {
             <Button variant="outlined" onClick={SendUpdate}>Uložit</Button>
         </DialogActions>
         <Snackbar
-
+            anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
             open={loaded}
             onClose={() => {
                 setLoaded(false)
@@ -123,18 +123,19 @@ const MaterialTableRow = (props) => {
             <TextField type="number" value={amount} onChange={(e) => { setAmount(e.target.value) }} size="small" label="Množštví" variant="filled" />
             <Button onClick={SendUpdate}><Add /></Button>
             <Snackbar
+                anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
                 open={loaded}
                 onClose={() => {
                     setLoaded(false)
                 }}
-                autoHideDuration={1000}
+                autoHideDuration={3000}
             >
                 <Alert severity="success">
                     Úspěšně uloženo!
                 </Alert>
             </Snackbar>
         </TableCell>
-    </TableRow>
+    </TableRow >
 }
 function IsSubstring(substring, string) {
     substring = substring.toLowerCase();

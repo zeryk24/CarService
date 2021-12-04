@@ -76,7 +76,7 @@ const EditingDialog = (props) => {
             {show ? <Button variant="outlined" onClick={SendUpdate}>Uložit</Button> : ""}
         </DialogActions>
         <Snackbar
-
+            anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
             open={loaded}
             onClose={() => {
                 setLoaded(false)
