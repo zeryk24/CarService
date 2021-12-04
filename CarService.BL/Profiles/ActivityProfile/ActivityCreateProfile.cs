@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿// Author: Jan Škvařil (xskvar09) 
+using AutoMapper;
 using CarService.DAL.Entities;
 using CarService.Shared.Models.ActivityModel;
 using System;

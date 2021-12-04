@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿// Author: Jan Škvařil (xskvar09) 
+using AutoMapper;
 using CarService.DAL.Entities.Interfaces;
 using CarService.DAL.Repositories.Interfaces.Generic;
 using System;

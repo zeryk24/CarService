@@ -33,6 +33,7 @@ namespace CarService.DAL.Database
         public DbSet<OrderEntity> Orders { get; set; }
         public DbSet<RepairEntity> Repaires { get; set; }
 
+        // Author: Jan Škvařil (xskvar09) 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // activity
