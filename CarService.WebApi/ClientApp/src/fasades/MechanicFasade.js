@@ -1,3 +1,5 @@
+// Author: Jan Škvařil (xskvar09)
+
 class MechanicFasade{
     constructor(){
         this.api_url = "api/mechanic";

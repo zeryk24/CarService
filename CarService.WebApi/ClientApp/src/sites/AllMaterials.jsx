@@ -1,3 +1,4 @@
+// Author: Jan Škvařil (xskvar09)
 import { Collapse, Dialog, Button, DialogActions, DialogContent, DialogTitle, Divider, LinearProgress, List, ListItem, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Alert, Fab } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import LayoutContext from "../components/LayoutContext";
@@ -7,8 +8,11 @@ import { Table } from "reactstrap";
 import Snackbar from '@mui/material/Snackbar';
 import { Add } from "@mui/icons-material";
 import EditIcon from '@mui/icons-material/Edit';
+
+// modal for editing material
 const EditingDialog = (props) => {
     let material = props.material;
+    // states
     const [name, setName] = useState("");
     const [desc, setDesc] = useState("");
     const [amount, setAmount] = useState(0);
@@ -31,6 +35,7 @@ const EditingDialog = (props) => {
             })
         }
     }
+    // "contructor"
     useEffect(() => {
         if (!editing) {
             setName("");
@@ -76,6 +81,7 @@ const EditingDialog = (props) => {
     </Dialog>
 }
 
+// table row with material
 const MaterialTableRow = (props) => {
     let mat = props.material;
     let sum = 0;
@@ -142,7 +148,9 @@ function IsSubstring(substring, string) {
     string = string.toLowerCase();
     return string.includes(substring);
 }
+// main component
 const AllMaterials = () => {
+    // states
     const [colps, setColps] = useState(false);
     const fasade = new MaterialsFasade();
     const { navOpen, setNavOpen, siteName, setSiteName } = useContext(LayoutContext);
@@ -153,6 +161,7 @@ const AllMaterials = () => {
     useEffect(() => {
         Reload();
     }, [])
+    // reload all data
     const Reload = () => {
         console.log("reloaded")
         fasade.GetAll().then((data) => {
@@ -165,7 +174,7 @@ const AllMaterials = () => {
         setClieckedMaterial(material);
         setOpenModal(true);
     }
-
+    // return loading bar
     if (materials.length == 0) {
         return <div style={{ background: "#424242", height: "100%" }}>
             <LinearProgress />
@@ -173,11 +182,14 @@ const AllMaterials = () => {
     }
     let table_rows = [];
     let k = 0;
+    // fill material rows
     for (let mat of materials) {
+        // for search
         if (!IsSubstring(search, mat.name)) continue;
         table_rows.push(<MaterialTableRow onClick={OnRowClick} material={mat} key={k++} />);
     }
     setSiteName("Správa všech materiálů v systému")
+    // render
     return <div style={{
         paddingLeft: navOpen ? "250px" : "50px",
         paddingRight: "50px",

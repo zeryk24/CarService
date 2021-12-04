@@ -1,3 +1,4 @@
+// Author: Jan Škvařil (xskvar09)
 import { createContext } from "react";
 
 

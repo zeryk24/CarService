@@ -1,3 +1,6 @@
+// Author: Jan Škvařil (xskvar09)
+
+
 import { Card, CardContent, Typography, Button } from "@mui/material";
 import { Line } from "react-chartjs-2";
 import {

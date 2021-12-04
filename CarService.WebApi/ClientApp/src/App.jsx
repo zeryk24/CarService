@@ -1,3 +1,4 @@
+// Author: Jan Škvařil (xskvar09)
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import Layout from './components/Layout';

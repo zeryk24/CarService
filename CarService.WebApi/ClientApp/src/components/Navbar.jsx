@@ -1,3 +1,4 @@
+// Author: Jan Škvařil (xskvar09)
 import { AppBar, Drawer, Toolbar, IconButton, Typography, Button, Divider } from "@mui/material";
 import { useContext, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';

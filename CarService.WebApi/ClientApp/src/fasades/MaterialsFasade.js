@@ -1,3 +1,4 @@
+// Author: Jan Škvařil (xskvar09)
 class MaterialsFasade{
     constructor(){
         this.api_url = "api/material";

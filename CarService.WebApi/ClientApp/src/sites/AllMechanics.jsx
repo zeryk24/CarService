@@ -1,4 +1,4 @@
-
+// Author: Jan Škvařil (xskvar09)
 import { LinearProgress, Card, CardContent, Button, Typography, Divider, CardActions, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Snackbar, Alert, Switch, FormControlLabel, Fab, Collapse } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import LayoutContext from "../components/LayoutContext";
@@ -6,8 +6,10 @@ import MechanicFasade from "../fasades/MechanicFasade"
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import { Add } from "@mui/icons-material";
 
+// modal for editing mechanics
 const EditingDialog = (props) => {
     let mechanic = props.mechanic;
+    // states
     const [name, setName] = useState("");
     const [liv, setLiv] = useState("");
     const [phone, setPhone] = useState("");
@@ -17,6 +19,8 @@ const EditingDialog = (props) => {
     const [loaded, setLoaded] = useState(true);
     const [show, setShow] = useState(true);
     let editing = mechanic != null;
+
+    // send update to server
     const SendUpdate = () => {
         setShow(false);
         const fasade = new MechanicFasade();
@@ -38,6 +42,7 @@ const EditingDialog = (props) => {
             })
         }
     }
+    // "constructor"
     useEffect(() => {
         if (!editing) {
             setName("");
@@ -59,6 +64,7 @@ const EditingDialog = (props) => {
         setShow(true);
     }, [props]);
 
+    // render
     return <Dialog
         open={props.openModal}
         onClose={() => { props.onClose(); props.setOpenModal(false) }}>
@@ -91,11 +97,14 @@ const EditingDialog = (props) => {
         </Snackbar>
     </Dialog>
 }
+
 function IsSubstring(substring, string) {
     substring = substring.toLowerCase();
     string = string.toLowerCase();
     return string.includes(substring);
 }
+
+// card for every mechanic
 const MechanicCard = (props) => {
     const card_height = "50px"
     const mechanic = props.mechanic;
@@ -174,8 +183,9 @@ const MechanicCard = (props) => {
     </Card>
 };
 
-
+// main compoment
 const AllMechanics = () => {
+    // states
     const { navOpen, setNavOpen, siteName, setSiteName } = useContext(LayoutContext);
     const [mechanics, setMechanics] = useState([]);
     const [openModal, setOpenModal] = useState(false);
@@ -192,6 +202,7 @@ const AllMechanics = () => {
         setSiteName("Správa zaměstnanců");
         UpdateData();
     }, []);
+    // show loading
     if (mechanics.length == 0) {
         return <div style={{ background: "#424242", height: "100%" }}>
             <LinearProgress />
@@ -199,8 +210,10 @@ const AllMechanics = () => {
     }
     let mechanic_cards = [];
     let k = 0;
+    // fill cards
     for (let mechanic of mechanics) {
         let show = false;
+        // for search
         if (IsSubstring(search, mechanic.name)
             || IsSubstring(search, mechanic.residencePlace)) {
             show = true;
@@ -212,6 +225,7 @@ const AllMechanics = () => {
             mechanic_cards.push(<MechanicCard onUpdate={UpdateData} key={k++} mechanic={mechanic} />)
         }
     }
+    // render
     return <div style={{
         minHeight: "105vh",
         background: "#424242",

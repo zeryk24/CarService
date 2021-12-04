@@ -1,8 +1,12 @@
+// Author: Jan Škvařil (xskvar09)
 import { Dialog, DialogActions, DialogContent, Card, DialogTitle, CardContent, Paper, Typography, Button, TextField, LinearProgress, Collapse } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import ChartCard from "../components/ChartCard";
 import LayoutContext from "../components/LayoutContext";
 import MaterialsFasade from "../fasades/MaterialsFasade"
+
+
+// card displaying one material
 const MaterialCard = (props) => {
     let amount = props.amount;
     let positive = amount > 10;
@@ -27,7 +31,7 @@ const MaterialCard = (props) => {
         <OrderModal material={props.material} openModal={openModal} setOpenModal={setOpenModal} />
     </Card >
 }
-
+// Modal component for ordering
 const OrderModal = (props) => {
     const Update = () => {
         props.setOpenModal(false);
@@ -54,9 +58,10 @@ function IsSubstring(substring, string) {
     return string.includes(substring);
 }
 
+// main site
 const Home = (props) => {
     const fasade = new MaterialsFasade();
-
+    // states
     const { navOpen, setNavOpen, siteName, setSiteName } = useContext(LayoutContext);
     const [oftenMaterials, setOftenMaterials] = useState([]);
     const [leastMaterials, setLeastMaterials] = useState([]);
@@ -65,6 +70,8 @@ const Home = (props) => {
     const [maxItems, setMaxItems] = useState(4);
     const [colps, setColps] = useState(false);
     const [chartMaterial, setChartMaterial] = useState(0);
+
+    // "constructor"
     useEffect(() => {
         setSiteName("Analýza spotřeby materiálů")
         fasade.GetAll().then((data) => {
@@ -82,12 +89,14 @@ const Home = (props) => {
             setColps(true);
         })
     }, []);
+
+    // return loading bar
     if (oftenMaterials.length == 0) {
         return <div style={{ background: "#424242", height: "100%" }}>
             <LinearProgress />
         </div>
     }
-
+    // prep cards
     let often_material_cards = [];
     let k = 0;
     for (let mat of oftenMaterials) {
@@ -106,6 +115,8 @@ const Home = (props) => {
             break;
         }
     }
+
+    // render
     return <div
         style={{
             paddingLeft: navOpen ? "250px" : "50px",
