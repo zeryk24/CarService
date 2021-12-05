@@ -1,4 +1,4 @@
-
+// Author: Jan Škvařil (xskvar09)
 import { useState } from "react";
 import Navbar from "./Navbar"
 import LayoutContext from "./LayoutContext";
