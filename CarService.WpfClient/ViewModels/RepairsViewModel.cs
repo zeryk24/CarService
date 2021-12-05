@@ -1,4 +1,5 @@
-﻿using CarService.Shared.Models.RepairModel;
+﻿using CarService.Shared.Models.OrderModel;
+using CarService.Shared.Models.RepairModel;
 using CarService.WpfClient.ApiClients.Interfaces;
 using CarService.WpfClient.Services;
 using CarService.WpfClient.ViewModels.Base;
@@ -15,6 +16,7 @@ namespace CarService.WpfClient.ViewModels
     internal class RepairsViewModel : ViewModelBase
     {
         private IRepairApiClient repairApiClient;
+        private readonly IOrderApiClient orderApiClient;
         private NavigationService navigationService;
         private CurrentListModelProvider currentListModelProvider;
 
@@ -56,9 +58,10 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
-        public RepairsViewModel(IRepairApiClient repairApiClient, NavigationService navigationService, CurrentListModelProvider currentListModelProvider)
+        public RepairsViewModel(IRepairApiClient repairApiClient, IOrderApiClient orderApiClient, NavigationService navigationService, CurrentListModelProvider currentListModelProvider)
         {
             this.repairApiClient = repairApiClient;
+            this.orderApiClient = orderApiClient;
             this.navigationService = navigationService;
             this.currentListModelProvider = currentListModelProvider;
 
@@ -72,8 +75,9 @@ namespace CarService.WpfClient.ViewModels
         {
             try
             {
+                var a = await orderApiClient.GetById(((OrderListModel)currentListModelProvider.CurrentListModel).Id);
                 Repairs.Clear();
-                foreach (var repair in (ICollection)await repairApiClient.GetAll())
+                foreach (var repair in a.Repairs)
                 {
                     Repairs.Add((RepairListModel)repair);
                 }
