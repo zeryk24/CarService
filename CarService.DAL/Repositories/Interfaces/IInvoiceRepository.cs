@@ -8,5 +8,6 @@ namespace CarService.DAL.Repositories.Interfaces
 {
     public interface IInvoiceRepository : IEntityRepository<InvoiceEntity>
     {
+        public ICollection<InvoiceEntity> GetCustomerInvoices(int customer_id);
     }
 }

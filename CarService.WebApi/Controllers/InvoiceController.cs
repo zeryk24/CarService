@@ -34,6 +34,13 @@ namespace CarService.Api.Controllers
             return InvoiceFacade.GetById(id);
         }
 
+        [HttpGet("GetByCustomer/{id}")]
+        [OpenApiOperation(ApiOperationBaseName + nameof(GetByCustomer))]
+        public ActionResult<List<InvoiceListModel>> GetByCustomer(int id)
+        {
+            return InvoiceFacade.GetCustomerInvoices(id).ToList();
+        }
+
         [HttpPost]
         [OpenApiOperation(ApiOperationBaseName + nameof(Create))]
         public ActionResult<InvoiceDetailModel> Create(InvoiceCreateModel Invoice)

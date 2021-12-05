@@ -12,9 +12,14 @@ namespace CarService.BL.Fasades
 {
     public class InvoiceFasade : EntityFacade<InvoiceEntity, InvoiceDetailModel, InvoiceCreateModel, InvoiceListModel, InvoiceUpdateModel>
     {
+        IInvoiceRepository invoice_repository;
         public InvoiceFasade(IInvoiceRepository repository, IMapper mapper) : base(repository, mapper)
         {
-
+          invoice_repository = repository; ;
+        }
+        public ICollection<InvoiceListModel> GetCustomerInvoices(int customer_id)
+        {
+            return mapper.Map<ICollection<InvoiceListModel>>(invoice_repository.GetCustomerInvoices(customer_id));
         }
     }
 }

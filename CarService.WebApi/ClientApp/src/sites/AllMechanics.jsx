@@ -91,7 +91,7 @@ const EditingDialog = (props) => {
             }}
             autoHideDuration={1000}
         >
-            <Alert severity="success">
+            <Alert severity="success" variant="filled">
                 Úspěšně uloženo!
             </Alert>
         </Snackbar>
