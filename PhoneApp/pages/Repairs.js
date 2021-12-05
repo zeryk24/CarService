@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useEffect, useState} from 'react';
 import { View, Text} from 'react-native';
 import RepairFasade from '../fasade/RepairFasade';

@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useState, useContext, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {Button, Dialog, Portal, TextInput} from 'react-native-paper';
@@ -11,8 +12,8 @@ const AddActivityDialog = ({
   repairId,
 }) => {
   useEffect(() => {
-    setValues({name: '', description: ''})
-  }, [dialogVisible])
+    setValues({name: '', description: ''});
+  }, [dialogVisible]);
   const [values, setValues] = useState({name: '', description: ''});
   const fasade = new ActivityFasade();
   return (

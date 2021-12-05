@@ -1,15 +1,11 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useEffect} from 'react';
-import {Button, ThemeProvider} from 'react-native-elements';
-import {View} from 'react-native';
-import Header from './components/AppHeader';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Repairs from './pages/Repairs';
 import Activities from './pages/Activities';
-
-
 
 const Stack = createNativeStackNavigator();
 
@@ -31,7 +27,7 @@ const App = () => {
           <Stack.Screen
             name="Activities"
             component={Activities}
-            options={({route}) => ({title: route.params.description})}
+            options={({route}) => ({title: route.params.description + ': ' + route.params.order.carSpz})}
           />
         </Stack.Navigator>
       </NavigationContainer>

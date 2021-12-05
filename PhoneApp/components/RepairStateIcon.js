@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useState} from 'react';
 import {List, Colors} from 'react-native-paper';
 import {View} from 'react-native';

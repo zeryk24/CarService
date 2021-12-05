@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React from 'react';
 import {Text, View} from 'react-native';
 import {List} from 'react-native-paper';

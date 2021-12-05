@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useState, useContext} from 'react';
 import {View} from 'react-native';
 import {Button, Dialog, Portal, RadioButton, Text} from 'react-native-paper';
@@ -6,7 +7,7 @@ import ActivityFasade from '../fasade/ActivityFasade';
 
 const ChooseStateDialog = ({setActivityState, activityData}) => {
   const {dialogVisible, setDialogVisible} = useContext(DialogContext);
-  const [stateValue, setStateValue] = useState(2);
+  const [stateValue, setStateValue] = useState(activityData.state);
   const fasade = new ActivityFasade();
   return (
     <View style={{position: 'absolute'}}>
@@ -21,21 +22,21 @@ const ChooseStateDialog = ({setActivityState, activityData}) => {
               onValueChange={newValue => setStateValue(newValue)}
               value={stateValue}>
               <View style={{flexDirection: 'row'}}>
-                <RadioButton color="#FF8C00" uncheckedColor='#fff' value={0} />
+                <RadioButton color="#FF8C00" uncheckedColor="#fff" value={0} />
                 <Text style={{position: 'relative', top: 10, color: '#fff'}}>
                   Hotovo
                 </Text>
               </View>
 
               <View style={{flexDirection: 'row'}}>
-                <RadioButton color="#FF8C00" uncheckedColor='#fff' value={1} />
+                <RadioButton color="#FF8C00" uncheckedColor="#fff" value={1} />
                 <Text style={{position: 'relative', top: 10, color: '#fff'}}>
                   Probíhá
                 </Text>
               </View>
 
               <View style={{flexDirection: 'row'}}>
-                <RadioButton color="#FF8C00" uncheckedColor='#fff' value={2} />
+                <RadioButton color="#FF8C00" uncheckedColor="#fff" value={2} />
                 <Text style={{position: 'relative', top: 10, color: '#fff'}}>
                   Čeká
                 </Text>

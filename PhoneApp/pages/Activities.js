@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useState, useEffect} from 'react';
 import {View} from 'react-native';
 import RepairFasade from '../fasade/RepairFasade';
@@ -16,7 +17,7 @@ const Activities = ({route}) => {
     fasade.GetRepairById(repair.id).then(data => {
       setActivities(data.activities);
     });
-  }, []);
+  }, [activities]);
   return (
     <Portal.Host>
       <View style={{flex: 1, backgroundColor: '#4c4c4c'}}>

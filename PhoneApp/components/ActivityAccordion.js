@@ -1,3 +1,4 @@
+// Author: Michal Zavadil (xzavad18)
 import React, {useState, createContext, useEffect} from 'react';
 import {View} from 'react-native';
 import {
@@ -19,7 +20,7 @@ const ActivityAccordion = ({name, description, state, id, repairId}) => {
   const addMaterialName = materials => {
     return materials.map(material => ({
       ...material,
-      name: materialsMapping.find(item => item.id === material.id).name,
+      name: materialsMapping.find(item => item.id === material.materialId).name,
     }));
   };
   const [expanded, setExpanded] = useState(false);
@@ -83,7 +84,7 @@ const ActivityAccordion = ({name, description, state, id, repairId}) => {
             <TextInput
               selectionColor="#FF8C00"
               theme={{colors: {primary: '#000'}}}
-              style={{flex: 2, height: 60, margin:5, justifyContent: 'center'}}
+              style={{flex: 2, height: 60, margin: 5, justifyContent: 'center'}}
               label="Jméno položky"
               value={inputMaterial.name}
               onChangeText={newValue =>
@@ -92,7 +93,7 @@ const ActivityAccordion = ({name, description, state, id, repairId}) => {
             />
             <TextInput
               selectionColor="#FF8C00"
-              style={{flex: 1, height: 60, margin:5, justifyContent: 'center'}}
+              style={{flex: 1, height: 60, margin: 5, justifyContent: 'center'}}
               theme={{colors: {primary: '#000'}}}
               label="Množství"
               value={inputMaterial.amount}
