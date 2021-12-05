@@ -53,7 +53,8 @@ namespace CarService.WpfClient.Services
             services.Register(() => new MainViewViewModel(
                 resolver.GetService<IOrderApiClient>(),
                 resolver.GetService<IMechanicApiClient>(),
-                resolver.GetService<NavigationService>()));
+                resolver.GetService<NavigationService>(),
+                resolver.GetService<CurrentListModelProvider>()));
 
             services.Register(() => new NavigationService());
             services.RegisterLazySingleton(() => new CurrentListModelProvider());

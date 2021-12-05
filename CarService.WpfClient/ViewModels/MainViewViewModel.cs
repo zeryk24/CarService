@@ -21,6 +21,7 @@ namespace CarService.WpfClient.ViewModels
         private IOrderApiClient _orderApiClient;
         private IMechanicApiClient _mechanicApiClient;
         private NavigationService _navigationService;
+        private readonly CurrentListModelProvider currentListModelProvider;
         private ObservableCollection<OrderListModel> _orders;
 
         private ICommand _customersCommand;
@@ -29,6 +30,19 @@ namespace CarService.WpfClient.ViewModels
             get
             {
                 return _customersCommand ??= new ActionCommand(() => _navigationService.GoTo("customer"));
+            }
+        }
+
+        private OrderListModel _selectedOrder;
+        public OrderListModel SelectedOrder
+        {
+            get { return _selectedOrder; }
+            set
+            {
+                _selectedOrder = value;
+                currentListModelProvider.CurrentListModel = value;
+                _navigationService.GoTo("orderDetailModel");
+                OnPropertyChanged(nameof(SelectedOrder));
             }
         }
 
@@ -121,7 +135,7 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
-        public MainViewViewModel(IOrderApiClient orderApiClient, IMechanicApiClient mechanicApiClient, NavigationService navigationService)
+        public MainViewViewModel(IOrderApiClient orderApiClient, IMechanicApiClient mechanicApiClient, NavigationService navigationService, CurrentListModelProvider currentListModelProvider)
         {
             ScreenParameters.Instance.WindowSizeChangedEvent += WindowSizeChangedEvent;
             Width = 200;
@@ -129,6 +143,7 @@ namespace CarService.WpfClient.ViewModels
             _orderApiClient = orderApiClient;
             _mechanicApiClient = mechanicApiClient;
             _navigationService = navigationService;
+            this.currentListModelProvider = currentListModelProvider;
             Orders = new ObservableCollection<OrderListModel>();
             Mechanics = new ObservableCollection<MechanicListModel>();
 

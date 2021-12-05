@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarService.WpfClient.Services
 {
-    internal class CurrentListModelProvider
+    public class CurrentListModelProvider
     {
         private IListModel _currentListModel;
         public IListModel CurrentListModel

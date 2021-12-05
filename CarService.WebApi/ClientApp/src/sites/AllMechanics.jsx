@@ -113,14 +113,19 @@ const MechanicCard = (props) => {
     const [openModal, setOpenModal] = useState(false);
     let repairs = [];
     let k = 0;
+    let finished = 0;
     for (let repair of mechanic.repairs) {
+        if (repair.state == 0) {
+            finished++;
+            continue;
+        }
         repairs.push(<div key={k++}>
             <Divider style={{ marginTop: "10px", marginBottom: "10px" }} />
             <Typography variant="h6" color="primary">
                 Datum vytvoření:  <b style={{ color: white }}>{new Date(repair.date).toLocaleDateString()}</b>
             </Typography>
-            <Typography variant="h6" color={repair.state != 0 ? "lightgreen" : "lightsalmon"}>
-                {repair.state == 0 ? "Čeká" : "Probíhá"}
+            <Typography variant="h6" color={repair.state == 1 ? "lightgreen" : "lightsalmon"}>
+                {repair.state != 1 ? "Čeká" : "Probíhá"}
             </Typography>
             <Typography variant="body1">
                 {repair.description}
@@ -161,7 +166,7 @@ const MechanicCard = (props) => {
                 </div>
                 <div style={{ margin: margin }}>
                     <Typography variant="h5" color="primary">Celkem oprav v systému: <b style={{ color: white }}>{mechanic.repairs.length}</b></Typography>
-                    <Typography variant="h5" color="primary">Celkem hotových oprav: <b style={{ color: white }}>{mechanic.repairs.length}</b></Typography>
+                    <Typography variant="h5" color="primary">Celkem hotových oprav: <b style={{ color: white }}>{finished}</b></Typography>
 
                 </div>
             </div>

@@ -71,7 +71,7 @@
         <StackPanel Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="3" Background="Transparent" Margin="0,-80,0,0">
             <TextBlock Text="Nejstarší hotové objednávky" Grid.ColumnSpan="10" Margin="20" FontSize="25" FontWeight="Bold" Foreground="DarkOrange"/>
 
-            <ListView Foreground="DarkOrange" Background="Gray" Margin="20" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedParameter}">
+            <ListView Foreground="DarkOrange" Background="Gray" Margin="20" ItemsSource="{Binding Orders}" SelectedItem="{Binding SelectedOrder}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Height" Value="50" />
