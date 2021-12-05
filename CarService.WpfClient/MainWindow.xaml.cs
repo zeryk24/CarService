@@ -26,5 +26,10 @@ public partial class MainWindow : Window
 		DataContext = mainWindowViewModel;
 		Application.Current.MainWindow = this;
 	}
-}
+
+        private void buttonCloseMessage_Click(object sender, RoutedEventArgs e)
+        {
+			System.Environment.Exit(0);
+        }
+    }
 }

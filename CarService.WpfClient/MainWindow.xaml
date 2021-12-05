@@ -34,7 +34,7 @@
         </StackPanel>
         <ContentControl Grid.ColumnSpan="2" Grid.RowSpan="3" Content="{Binding SelectedViewModel}" />
 
-        <Button x:Name="buttonCloseMessage"  HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Cursor="Hand" Command="{Binding CloseCommand}">
+        <Button Click="buttonCloseMessage_Click" x:Name="buttonCloseMessage"  HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0" Cursor="Hand" Command="{Binding CloseCommand}">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Content" Value="{materialDesign:PackIcon Close, Size=30}"/>
