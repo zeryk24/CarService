@@ -8,5 +8,6 @@ namespace CarService.DAL.Repositories.Interfaces
 {
     public interface IOrderRepository : IEntityRepository<OrderEntity>
     {
+        public ICollection<OrderEntity> GetFinishedOrders();
     }
 }

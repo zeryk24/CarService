@@ -26,6 +26,12 @@ namespace CarService.Api.Controllers
         {
             return OrderFacade.GetAll().ToList();
         }
+        [HttpGet("finished")]
+        [OpenApiOperation(ApiOperationBaseName + nameof(GetFinished))]
+        public ActionResult<List<OrderListModel>> GetFinished()
+        {
+            return OrderFacade.GetFinishedOrders().ToList();
+        }
 
         [HttpGet("{id}")]
         [OpenApiOperation(ApiOperationBaseName + nameof(GetById))]

@@ -12,9 +12,14 @@ namespace CarService.BL.Fasades
 {
     public class OrderFasade : EntityFacade<OrderEntity, OrderDetailModel, OrderCreateModel, OrderListModel, OrderUpdateModel>
     {
+        IOrderRepository order_repository;
         public OrderFasade(IOrderRepository repository, IMapper mapper) : base(repository, mapper)
         {
-
+            order_repository = repository; 
+        }
+        public ICollection<OrderListModel> GetFinishedOrders()
+        {
+            return mapper.Map<ICollection<OrderListModel>>( order_repository.GetFinishedOrders());
         }
     }
 }
