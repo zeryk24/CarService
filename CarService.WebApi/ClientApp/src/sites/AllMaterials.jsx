@@ -163,7 +163,6 @@ const AllMaterials = () => {
     }, [])
     // reload all data
     const Reload = () => {
-        console.log("reloaded")
         fasade.GetAll().then((data) => {
             setMaterials(data);
             setColps(true);

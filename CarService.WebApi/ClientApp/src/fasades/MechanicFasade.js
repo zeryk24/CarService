@@ -42,7 +42,6 @@ class MechanicFasade{
             body: JSON.stringify(auction_form_data)
         });
         let data = await reponse.text();
-        console.log(data);
         return data;
     }
     async Delete(id){

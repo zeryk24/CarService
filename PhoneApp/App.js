@@ -6,39 +6,36 @@ import Header from './components/AppHeader';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-import Orders from './pages/Orders';
+import Repairs from './pages/Repairs';
 import Activities from './pages/Activities';
 
-const theme = {
-  colors: {
-    //primary: '#FF8C00',
-    primary: '#2B2B2B',
-    //primary: '#ffffff',
-  },
-};
+
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Orders" component={Orders} />
-        <Stack.Screen name="Activities" component={Activities} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#FF8C00',
+            },
+            headerTintColor: '#000',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+
+            },
+          }}>
+          <Stack.Screen name="Opravy" component={Repairs} />
+          <Stack.Screen
+            name="Activities"
+            component={Activities}
+            options={({route}) => ({title: route.params.description})}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 };
 
 export default App;
-
-/* <ThemeProvider theme={theme}>
-        <Header />
-        <Button title="Hey!" />
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Orders" component={Orders} />
-            <Stack.Screen name="Activities" component={Activities} />
-          </Stack.Navigator>
-        </NavigationContainer>
-    </ThemeProvider> */

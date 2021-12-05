@@ -1,18 +1,32 @@
-import React, {useEffect} from 'react';
-import { View } from 'react-native';
-import {Text} from 'react-native-elements';
-import OrderFasade from '../fasade/orderFasade';
+import React, {useState, useEffect} from 'react';
+import {View} from 'react-native';
+import RepairFasade from '../fasade/RepairFasade';
+import ActivityAccordion from '../components/ActivityAccordion';
+import { Provider, Portal } from 'react-native-paper';
+import AddActivityFAB from './../components/AddActivityFAB';
+import AddActivityDialog from '../components/AddActivityDialog';
 
 const Activities = ({route}) => {
-  const { id } = route.params;
-  /* let fasade = new OrderFasade();
+  const repair = route.params;
+  const [dialogVisible, setDialogVisible] = useState(false);
+  const [activities, setActivities] = useState([]);
+  fasade = new RepairFasade();
+
   useEffect(() => {
-    fasade.GetOrders.then(data => console.log('done'));
-  }, []); */
+    fasade.GetRepairById(repair.id).then(data => {
+      setActivities(data.activities);
+    });
+  }, []);
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>{id}</Text>
-    </View>
+    <Portal.Host>
+      <View style={{flex: 1, backgroundColor: '#4c4c4c'}}>
+        {activities.map(item => (
+          <ActivityAccordion key={item.id} {...item} repairId={repair.id}/>
+        ))}
+      </View>
+      <AddActivityFAB {...{dialogVisible, setDialogVisible}}/>
+      <AddActivityDialog {...{setActivities, dialogVisible, setDialogVisible}} repairId={repair.id}/>
+    </Portal.Host>
   );
 };
 
