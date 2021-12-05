@@ -41,6 +41,24 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
+        private ICommand _addCustomerCommand;
+        public ICommand AddCustomerCommand
+        {
+            get
+            {
+                return _addCustomerCommand ??= new ActionCommand(() => _navigationService.GoTo("addCustomer"));
+            }
+        }
+
+        private ICommand _addOrderCommand;
+        public ICommand AddOrderCommand
+        {
+            get
+            {
+                return _addOrderCommand ??= new ActionCommand(() => _navigationService.GoTo("addOrder"));
+            }
+        }
+
         public ObservableCollection<OrderListModel> Orders
         {
             get { return _orders; }

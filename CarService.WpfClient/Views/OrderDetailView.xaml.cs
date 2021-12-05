@@ -16,14 +16,14 @@ using System.Windows.Shapes;
 namespace CarService.WpfClient.Views
 {
     /// <summary>
-    /// Interaction logic for OrdersView.xaml
+    /// Interaction logic for OrderDetailView.xaml
     /// </summary>
-    public partial class OrdersView : UserControl
+    public partial class OrderDetailView : UserControl
     {
-        public OrdersView()
+        public OrderDetailView()
         {
             InitializeComponent();
-            DataContext = Locator.Current.GetService<OrdersViewModel>();
+            DataContext = Locator.Current.GetService<OrderDetailViewModel>();
         }
     }
 }

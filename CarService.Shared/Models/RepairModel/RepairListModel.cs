@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.RepairModel
 {
-    public class RepairListModel
+    public class RepairListModel : IListModel
     {
         public int Id { get; set; }
         public string Description { get; set; }

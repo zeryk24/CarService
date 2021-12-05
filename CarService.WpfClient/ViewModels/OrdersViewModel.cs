@@ -16,7 +16,7 @@ namespace CarService.WpfClient.ViewModels
     {
         private IOrderApiClient _orderApiClient;
         private NavigationService _navigationService;
-
+        private readonly CurrentListModelProvider currentListModelProvider;
         private ObservableCollection<OrderListModel> _orders;
         public ObservableCollection<OrderListModel> Orders
         {
@@ -25,6 +25,19 @@ namespace CarService.WpfClient.ViewModels
             {
                 _orders = value;
                 OnPropertyChanged(nameof(Orders));
+            }
+        }
+
+        private OrderListModel _selectedOrder;
+        public OrderListModel SelectedOrder
+        {
+            get { return _selectedOrder; }
+            set
+            {
+                _selectedOrder = value;
+                currentListModelProvider.CurrentListModel = value;
+                _navigationService.GoTo("orderDetailModel");
+                OnPropertyChanged(nameof(SelectedOrder));
             }
         }
 
@@ -37,11 +50,11 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
-        public OrdersViewModel(IOrderApiClient orderApiClient, NavigationService navigationService)
+        public OrdersViewModel(IOrderApiClient orderApiClient, NavigationService navigationService, CurrentListModelProvider currentListModelProvider)
         {
             _orderApiClient = orderApiClient;
             _navigationService = navigationService;
-
+            this.currentListModelProvider = currentListModelProvider;
             Orders = new ObservableCollection<OrderListModel>();
 
             GetAllOrders();

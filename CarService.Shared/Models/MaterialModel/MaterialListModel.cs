@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.MaterialModel
 {
-    public class MaterialListModel
+    public class MaterialListModel : IListModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

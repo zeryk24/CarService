@@ -1,6 +1,4 @@
-﻿using CarService.WpfClient.ViewModels;
-using Splat;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -16,14 +14,13 @@ using System.Windows.Shapes;
 namespace CarService.WpfClient.Views
 {
     /// <summary>
-    /// Interaction logic for OrdersView.xaml
+    /// Interaction logic for RepairsView.xaml
     /// </summary>
-    public partial class OrdersView : UserControl
+    public partial class RepairsView : UserControl
     {
-        public OrdersView()
+        public RepairsView()
         {
             InitializeComponent();
-            DataContext = Locator.Current.GetService<OrdersViewModel>();
         }
     }
 }

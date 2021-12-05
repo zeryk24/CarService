@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.ActivityModel
 {
-    public class ActivityListModel
+    public class ActivityListModel : IListModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

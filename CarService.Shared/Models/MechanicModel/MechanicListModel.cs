@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.MechanicModel
 {
-    public class MechanicListModel
+    public class MechanicListModel : IListModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

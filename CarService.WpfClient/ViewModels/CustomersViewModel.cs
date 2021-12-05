@@ -15,6 +15,7 @@ namespace CarService.WpfClient.ViewModels
     internal class CustomersViewModel : ViewModelBase
     {
         private ICustomerApiClient _customerApiClient;
+        private readonly CurrentListModelProvider currentListModelProvider;
         private  NavigationService _navigationService;
 
         private ObservableCollection<CustomerListModel> _customers;
@@ -28,6 +29,20 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
+        private CustomerListModel _selectedCustomer;
+        public CustomerListModel SelectedCustomer
+        {
+            get { return _selectedCustomer; }
+            set
+            {
+                _selectedCustomer = value;
+                currentListModelProvider.CurrentListModel = value;
+                _navigationService.GoTo("customerDetailModel");
+                OnPropertyChanged(nameof(_selectedCustomer));
+            }
+        }
+
+
         private ICommand backCommand;
         public ICommand BackCommand
         {
@@ -37,9 +52,10 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
-        public CustomersViewModel(ICustomerApiClient customerApiClient, NavigationService navigationService)
+        public CustomersViewModel(ICustomerApiClient customerApiClient, CurrentListModelProvider currentListModelProvider, NavigationService navigationService)
         {
             _customerApiClient = customerApiClient;
+            this.currentListModelProvider = currentListModelProvider;
             _navigationService = navigationService;
 
             Customers = new ObservableCollection<CustomerListModel>();

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CarService.WpfClient.ApiClients.Base
 {
-    public interface IGenericApiClient<TDetailModel, TCreateModel, TListModel, TUpdateModel>
+    public interface IGenericApiClient<TCreateModel,TDetailModel, TListModel, TUpdateModel>
 	{
 		public Task<ICollection<TListModel>> GetAll();
 		public Task<TDetailModel> GetById(int id);

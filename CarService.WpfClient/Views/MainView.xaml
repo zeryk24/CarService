@@ -62,7 +62,7 @@
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2" Height="115" VerticalAlignment="Top">
             <Grid.InputBindings>
-                <MouseBinding Command="{Binding CustomersCommand}" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding AddOrderCommand}" MouseAction="LeftClick"/>
             </Grid.InputBindings>
             <Rectangle VerticalAlignment="Top" Grid.ColumnSpan="2" Height="100" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,10,5,0"/>
             <TextBlock Text="Přidat objednávku" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="45" Cursor="Hand"/>
@@ -71,7 +71,7 @@
 
         <Grid Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2" Height="115" VerticalAlignment="Top">
             <Grid.InputBindings>
-                <MouseBinding Command="{Binding }" MouseAction="LeftClick"/>
+                <MouseBinding Command="{Binding AddCustomerCommand}" MouseAction="LeftClick"/>
             </Grid.InputBindings>
             <Rectangle VerticalAlignment="Top" Height="100" RadiusX="10" RadiusY="10" Cursor="Hand" Margin="5,10,5,0"/>
             <TextBlock Text="Přidat zákazníka" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Margin="45" Cursor="Hand"/>

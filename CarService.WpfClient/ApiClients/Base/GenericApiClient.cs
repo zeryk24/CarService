@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace CarService.WpfClient.ApiClients.Base
 {
-    public abstract class GenericApiClient<TDetailModel, TCreateModel, TListModel, TUpdateModel> :
-    IGenericApiClient<TDetailModel, TCreateModel, TListModel, TUpdateModel>
+    public abstract class GenericApiClient<TCreateModel, TDetailModel, TListModel, TUpdateModel> :
+    IGenericApiClient<TCreateModel, TDetailModel, TListModel, TUpdateModel>
     {
         HttpClient client;
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.ConsumesModel
 {
-    public class ConsumesListModel
+    public class ConsumesListModel : IListModel
     {
         public int Id { get; set; }
         public int Amount { get; set; }

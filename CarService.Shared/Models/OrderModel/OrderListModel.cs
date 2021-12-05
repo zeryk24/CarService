@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.OrderModel
 {
-    public class OrderListModel
+    public class OrderListModel : IListModel
     {
         public int Id { get; set; }
         public DateTime CreationDate { get; set; }

@@ -19,9 +19,32 @@ namespace CarService.WpfClient.Services
             services.Register(() => new MainWindowViewModel());
             services.Register(() => new OrdersViewModel(
                 resolver.GetService<IOrderApiClient>(),
-                resolver.GetService<NavigationService>()));
+                resolver.GetService<NavigationService>(),
+                resolver.GetService<CurrentListModelProvider>()));
+            services.Register(() => new RepairsViewModel(
+                resolver.GetService<IRepairApiClient>(),
+                resolver.GetService<NavigationService>(),
+                resolver.GetService<CurrentListModelProvider>()));
+            services.Register(() => new OrderDetailViewModel(
+                resolver.GetService<IOrderApiClient>(),
+                resolver.GetService<NavigationService>(),
+                resolver.GetService<CurrentListModelProvider>()));
+            services.Register(() => new CustomerDetailViewModel(
+                resolver.GetService<ICustomerApiClient>(),
+                resolver.GetService<NavigationService>(),
+                resolver.GetService<CurrentListModelProvider>()));
             services.Register(() => new CustomersViewModel(
                 resolver.GetService<ICustomerApiClient>(),
+                resolver.GetService<CurrentListModelProvider>(),
+                resolver.GetService<NavigationService>()));
+            services.Register(() => new AddCustomerViewModel(
+                resolver.GetService<ICustomerApiClient>(),
+                resolver.GetService<NavigationService>()));
+            services.Register(() => new AddRepairViewModel(
+                resolver.GetService<IRepairApiClient>(),
+                resolver.GetService<NavigationService>()));
+            services.Register(() => new AddOrderViewModel(
+                resolver.GetService<IOrderApiClient>(),
                 resolver.GetService<NavigationService>()));
             services.Register(() => new MainViewViewModel(
                 resolver.GetService<IOrderApiClient>(),
@@ -29,6 +52,7 @@ namespace CarService.WpfClient.Services
                 resolver.GetService<NavigationService>()));
 
             services.Register(() => new NavigationService());
+            services.RegisterLazySingleton(() => new CurrentListModelProvider());
 
             services.Register<IConsumesApiClient>(() => new ConsumesApiClient(
                 resolver.GetService<HttpClient>()));

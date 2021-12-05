@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CarService.Shared.Models.InvoiceModel
 {
-    public class InvoiceListModel
+    public class InvoiceListModel : IListModel
     {
         public int Id { get; set; }
         public DateTime ExposeDate { get; set; }

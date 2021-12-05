@@ -37,6 +37,12 @@ namespace CarService.WpfClient.ViewModels
             Dictionary<string, Type> viewModels = new Dictionary<string, Type> {
                 { "main", typeof(MainViewViewModel) },
                 { "customer", typeof(CustomersViewModel) },
+                { "addCustomer", typeof(AddCustomerViewModel) },
+                { "addOrder", typeof(AddOrderViewModel) },
+                { "orderDetailModel", typeof(OrderDetailViewModel) },
+                { "customerDetailModel", typeof(CustomerDetailViewModel) },
+                { "repair", typeof(RepairsViewModel) },
+                { "addRepair", typeof(AddRepairViewModel) },
                 { "order", typeof(OrdersViewModel) }};
 
             SelectedViewModel = (ViewModelBase)Locator.Current.GetService(viewModels[par]);
