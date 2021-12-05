@@ -117,7 +117,7 @@ namespace CarService.WpfClient.ViewModels
                 Date = Date,
                 OrderId = ((OrderListModel)_currentListModelProvider.CurrentListModel).Id,
                 MechanicId = Mechanic.Id,
-                State = 0
+                State = Shared.Enums.State.Ceka
             };
             try
             {
