@@ -61,7 +61,7 @@
                         Orientation="Horizontal"
                         Margin="8">
 
-                                    <Button
+                                    <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding .}"
                             Style="{StaticResource MaterialDesignToolForegroundButton}"
                             Width="30"
                             Padding="2 0 2 0"

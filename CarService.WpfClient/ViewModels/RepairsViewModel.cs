@@ -47,6 +47,15 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
+        private ICommand _deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand ??= new ActionCommand(Delete);
+            }
+        }
+
         public RepairsViewModel(IRepairApiClient repairApiClient, NavigationService navigationService, CurrentListModelProvider currentListModelProvider)
         {
             this.repairApiClient = repairApiClient;
@@ -56,8 +65,6 @@ namespace CarService.WpfClient.ViewModels
             Repairs = new ObservableCollection<RepairListModel>();
 
             GetOrdersRepairs();
-            GetOrdersRepairs();
-            GetOrdersRepairs();
 
         }
 
@@ -65,7 +72,7 @@ namespace CarService.WpfClient.ViewModels
         {
             try
             {
-                //Customers.Clear();
+                Repairs.Clear();
                 foreach (var repair in (ICollection)await repairApiClient.GetAll())
                 {
                     Repairs.Add((RepairListModel)repair);
@@ -74,6 +81,20 @@ namespace CarService.WpfClient.ViewModels
             catch (Exception)
             {
             }
+        }
+
+        private void Delete(object sender)
+        {
+            try
+            {
+                var x = (RepairListModel)sender;
+                repairApiClient.Delete(x.Id);
+            }
+            catch (Exception)
+            {
+            }
+
+            GetOrdersRepairs();
         }
     }
 }

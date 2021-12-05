@@ -96,7 +96,7 @@ namespace CarService.WpfClient.ViewModels
             try
             {
                 Orders.Clear();
-                foreach (var order in (ICollection)await _orderApiClient.GetAll())
+                foreach (var order in (ICollection)await _orderApiClient.GetFinished())
                 {
                     Orders.Add((OrderListModel)order);
                 }
@@ -111,7 +111,7 @@ namespace CarService.WpfClient.ViewModels
             try
             {
                 Mechanics.Clear();
-                foreach (var mechanic in (ICollection)await _mechanicApiClient.GetAll())
+                foreach (var mechanic in (ICollection)await _mechanicApiClient.GetWithoutWork())
                 {
                     Mechanics.Add((MechanicListModel)mechanic);
                 }
@@ -134,16 +134,6 @@ namespace CarService.WpfClient.ViewModels
 
             GetDoneOrders();
             GetFreeMechanics();
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
-            Orders.Add(new OrderListModel());
         }
 
         private void WindowSizeChangedEvent(object sender, EventArgs e)

@@ -42,9 +42,12 @@ namespace CarService.WpfClient.Services
                 resolver.GetService<NavigationService>()));
             services.Register(() => new AddRepairViewModel(
                 resolver.GetService<IRepairApiClient>(),
-                resolver.GetService<NavigationService>()));
+                resolver.GetService<IMechanicApiClient>(),
+                resolver.GetService<NavigationService>(),
+                resolver.GetService<CurrentListModelProvider>() ));
             services.Register(() => new AddOrderViewModel(
                 resolver.GetService<IOrderApiClient>(),
+                resolver.GetService<ICustomerApiClient>(),
                 resolver.GetService<NavigationService>()));
             services.Register(() => new MainViewViewModel(
                 resolver.GetService<IOrderApiClient>(),

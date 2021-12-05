@@ -50,6 +50,15 @@ namespace CarService.WpfClient.ViewModels
             }
         }
 
+        private ICommand _deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return _deleteCommand ??= new ActionCommand(Delete);
+            }
+        }
+
         public OrdersViewModel(IOrderApiClient orderApiClient, NavigationService navigationService, CurrentListModelProvider currentListModelProvider)
         {
             _orderApiClient = orderApiClient;
@@ -58,19 +67,13 @@ namespace CarService.WpfClient.ViewModels
             Orders = new ObservableCollection<OrderListModel>();
 
             GetAllOrders();
-            GetAllOrders();
-            GetAllOrders();
-            GetAllOrders();
-            GetAllOrders();
-            GetAllOrders();
-            GetAllOrders();
         }
 
         public async void GetAllOrders()
         {
             try
             {
-                //Customers.Clear();
+                Orders.Clear();
                 foreach (var order in (ICollection)await _orderApiClient.GetAll())
                 {
                     Orders.Add((OrderListModel)order);
@@ -79,6 +82,20 @@ namespace CarService.WpfClient.ViewModels
             catch (Exception)
             {
             }
+        }
+
+        private void Delete(object sender)
+        {
+            try
+            {
+                var x = (OrderListModel)sender;
+                _orderApiClient.Delete(x.Id);
+            }
+            catch (Exception e)
+            {
+            }
+
+            GetAllOrders();
         }
     }
 }

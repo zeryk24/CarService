@@ -39,25 +39,25 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Cursor="Hand">
-                        <materialDesign:Card Width="320" Height="100" Grid.RowSpan="5" Grid.ColumnSpan="4" Background="#2b2b2b">
+                        <materialDesign:Card Width="320" Height="110" Grid.RowSpan="5" Grid.ColumnSpan="4" Background="#2b2b2b">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="10" />
-                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="1*" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <StackPanel Grid.Row="1" HorizontalAlignment="Center">
-                                    <TextBlock FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Text="{Binding Customer.Name}"/>
+                                <StackPanel Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Center">
+                                    <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="DarkOrange" Text="{Binding Order.CarSpz}"/>
                                     <TextBlock HorizontalAlignment="Center"
                             Foreground="DarkOrange"
                             TextWrapping="Wrap"
                             VerticalAlignment="Center"
-                            Text="{Binding CreationDate}"/>
+                            Text="{Binding Description}"/>
                                     <TextBlock HorizontalAlignment="Center"
                             Foreground="DarkOrange"
                             TextWrapping="Wrap"
                             VerticalAlignment="Center"
-                            Text="{Binding CarSpz}"/>
+                            Text="{Binding State}"/>
                                 </StackPanel>
                                 <StackPanel
                         HorizontalAlignment="Right"
@@ -65,7 +65,7 @@
                         Orientation="Horizontal"
                         Margin="8">
 
-                                    <Button
+                                    <Button Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ItemsControl}}}" CommandParameter="{Binding .}"
                             Style="{StaticResource MaterialDesignToolForegroundButton}"
                             Width="30"
                             Padding="2 0 2 0"
