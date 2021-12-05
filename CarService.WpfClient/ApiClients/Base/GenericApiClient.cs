@@ -11,7 +11,7 @@ namespace CarService.WpfClient.ApiClients.Base
     public abstract class GenericApiClient<TCreateModel, TDetailModel, TListModel, TUpdateModel> :
     IGenericApiClient<TCreateModel, TDetailModel, TListModel, TUpdateModel>
     {
-        HttpClient client;
+        protected HttpClient client;
 
         public GenericApiClient(HttpClient httpClient, string apiUrl = null)
         {

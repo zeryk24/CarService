@@ -15,7 +15,9 @@ const context =  [
     "/api/repair",
     "/api/activity",
     "/api/activity/getdate",
-    "/api/invoice/getbycustomer"
+    "/api/invoice/getbycustomer",
+    "/api/order/finished",
+    "/api/mechanic/withoutwork"
 
 ];
 
